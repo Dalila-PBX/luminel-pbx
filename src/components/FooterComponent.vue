@@ -121,8 +121,12 @@ onUnmounted(() => {
             ref="cascadeTextRef"
             class="cascade-text m-0 fw-bold lh-1 text-white d-flex justify-content-center overflow-hidden"
           >
-            <span>L</span><span>u</span><span>m</span><span>i</span><span>n</span><span>e</span
-            ><span>l</span>
+            <span>L</span>
+            <span class="position-relative">
+              u
+              <img src="/img/header-footer/estrella.png" alt="" class="accent-u" />
+            </span>
+            <span>m</span><span>i</span><span>n</span><span>e</span><span>l</span>
           </h2>
         </div>
       </div>
@@ -220,12 +224,23 @@ onUnmounted(() => {
 .cascade-text {
   font-family: 'Open Sans', sans-serif;
   font-size: 10vw; /* Tamaño grande responsivo */
+  padding-top: 0.3em; /* Espacio extra arriba para que no se corte el acento */
 }
 
 .cascade-text span {
   display: inline-block;
   opacity: 0;
   transform: translateY(-100%);
+}
+
+/* Estilos para la imagen sobre la U */
+.accent-u {
+  position: absolute;
+  top: -0.2em; /* Controla qué tan arriba aparece (ajusta según tu imagen) */
+  left: 50%;
+  transform: translateX(-35%); /* Centra la imagen exactamente sobre la letra */
+  width: 0.7em; /* Controla el tamaño de la imagen (ajusta a tu gusto) */
+  height: auto;
 }
 
 /* --- Estilos Subtítulo (Agencia Creativa) --- */
