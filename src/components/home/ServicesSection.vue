@@ -127,7 +127,7 @@ onMounted(() => {
       </div>
 
       <!-- Botón Anterior (Izquierda) -->
-      <div class="col-auto">
+      <div class="col-auto nav-btn-container">
         <button
           id="prevBtn"
           class="btn rounded-circle p-2 p-md-3 lh-1 custom-nav-btn bg-transparent border-0"
@@ -162,7 +162,7 @@ onMounted(() => {
       </div>
 
       <!-- Botón Siguiente (Derecha) -->
-      <div class="col-auto">
+      <div class="col-auto nav-btn-container">
         <button
           id="nextBtn"
           class="btn rounded-circle p-2 p-md-3 lh-1 custom-nav-btn bg-transparent border-0"
@@ -357,6 +357,24 @@ onMounted(() => {
   /* Ocultar el fondo en pantallas menores a 1200px */
   .services-bg-layer {
     display: none;
+  }
+}
+
+/* --- MEDIA QUERY PARA MÓVILES PEQUEÑOS (ej. 360px) --- */
+@media (max-width: 380px) {
+  /* Ocultamos los botones y su contenedor para dar todo el ancho al carrusel */
+  .nav-btn-container {
+    display: none;
+  }
+
+  /* Ajustamos el ancho de la tarjeta para aprovechar el espacio liberado */
+  #carousel > div.selected,
+  #carousel > div.prev,
+  #carousel > div.next,
+  #carousel > div.hideLeft,
+  #carousel > div.hideRight {
+    width: 290px;
+    max-width: 100%;
   }
 }
 

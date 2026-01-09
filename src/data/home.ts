@@ -62,7 +62,7 @@ export const homeData: HomeData = {
     },
     {
       title: 'Diseño Web',
-      desc: 'Desde interfaces intuitivas hasta contenido persuasivo, creamos experiencias digitales impactantes y adaptadas a cada cliente.',
+      desc: 'Desde interfaces intuitivas hasta contenido persuasivo, creamos experiencias impactantes adaptadas a cada cliente.',
       img: '/img/inicio/diseno_web.png',
       bgColor: '#A8C738',
       btnColor: '#212C00',
