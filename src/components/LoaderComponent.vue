@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-// @ts-expect-error: epic-spinners no tiene tipos definidos
-import { HalfCircleSpinner } from 'epic-spinners';
 
 const loading = ref(true);
 
@@ -21,7 +19,7 @@ onMounted(() => {
       <div class="mb-2">
         <img src="/img/LOGOLUMINEL.png" alt="Logo-pbx" class="img-fluid" width="250" />
       </div>
-      <HalfCircleSpinner :animation-duration="1000" :size="70" color="#7AD100" />
+      <img src="/img/header-footer/estrella2.png" alt="Cargando..." class="rotating-star" />
     </div>
   </div>
 </template>
@@ -45,5 +43,20 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.rotating-star {
+  width: 70px; /* Ajusta este tamaño si la estrella se ve muy grande o chica */
+  height: auto;
+  animation: spin 1.4s linear infinite; /* 1.5s es la velocidad, bájalo para que gire más rápido */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
