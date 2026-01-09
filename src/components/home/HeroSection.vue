@@ -7,7 +7,7 @@ import { homeData } from '@/data/home';
   <section
     class="hero-main d-none d-lg-flex align-items-center"
     :style="{ backgroundImage: `url(${homeData.hero.bgDesktop})` }"
-     
+
   >
     <div class="container-fluid position-relative w-100">
       <div class="row justify-content-center">
@@ -22,7 +22,7 @@ import { homeData } from '@/data/home';
             v-html="homeData.hero.title"
           ></h1>
           <h3
-            class="display-6 subtitle-text fw-bold m-0 text-end"
+            class="display-6 subtitle-text fw-bold mb-5  text-end"
             style="padding-right: 3rem"
             v-html="homeData.hero.subtitle"
           ></h3>
@@ -107,7 +107,7 @@ import { homeData } from '@/data/home';
   line-height: 1;
 }
 .social-icon {
-  height: 28px;
+  height: clamp(28px, 4vw, 40px);
   width: auto;
   transition: opacity 0.2s ease-in-out;
 }
