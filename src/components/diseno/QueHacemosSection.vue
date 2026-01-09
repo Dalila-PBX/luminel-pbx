@@ -424,4 +424,11 @@
     transform: translate3d(-100%, 0, 0);
   }
 }
+
+@media (max-width:400px){
+  .slide-track p {
+  font-size: clamp(0.63rem, 2.5vw, 2.6rem);
+
+}
+}
 </style>

@@ -373,4 +373,10 @@ import { disenoData } from '@/data/diseno';
     margin-top: 0rem;
   }
 }
+
+@media (max-width: 400px){
+  .card-title {
+    width: 70%;
+  }
+}
 </style>
