@@ -51,7 +51,7 @@ import { disenoData } from '@/data/diseno';
                 <!-- Grupo superior: Título y lista -->
                 <div>
                   <h2
-                    class="card-title display-4 fw-bold text-center text-uppercase mx-auto"
+                    class="card-title display-4  text-center text-uppercase mx-auto"
                     :style="{ color: plan.color }"
                   >
                     {{ plan.title }}
@@ -111,7 +111,7 @@ import { disenoData } from '@/data/diseno';
                 <!-- Grupo superior: Título y lista -->
                 <div>
                   <h2
-                    class="card-title display-4 fw-bold text-center text-uppercase mx-auto"
+                    class="card-title display-4  text-center text-uppercase mx-auto"
                     :style="{ color: plan.color }"
                   >
                     {{ plan.title }}
@@ -222,7 +222,7 @@ import { disenoData } from '@/data/diseno';
                 <!-- Grupo superior: Título y lista -->
                 <div >
                   <h2
-                    class="card-title display-5  fw-bold text-center text-uppercase mx-auto"
+                    class="card-title display-5 text-center text-uppercase mx-auto"
                     :style="{ color: plan.color }"
                   >
                     {{ plan.title }}
@@ -296,6 +296,7 @@ import { disenoData } from '@/data/diseno';
   width: 85%;
   margin-bottom: 13rem;
   margin-top: 3rem;
+  font-weight: 800;
 }
 
 .grupo-inferior{
