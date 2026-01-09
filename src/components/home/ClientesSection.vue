@@ -68,7 +68,7 @@ onMounted(() => {
                           <p class="user-category">{{ testimonial.title }}</p>
                         </div>
                       </div>
-                      <p>{{ testimonial.quote }}</p>
+                      <p class="text-p">{{ testimonial.quote }}</p>
                     </div>
                   </div>
                 </div>
@@ -256,7 +256,7 @@ onMounted(() => {
     height: auto; /* Altura automática para que el texto crezca hacia abajo si es necesario */
     min-height: 500px; /* Mantenemos la altura mínima de la plantilla */
     padding: 1.5rem;
-    background-image: var(--bg-mobile); 
+    background-image: var(--bg-mobile);
     /* Hacemos que el fondo no se encoja, manteniendo el tamaño que tiene en 768px */
     /* El fondo se recortará en los lados en pantallas más pequeñas, pero no se hará más pequeño */
     background-size: 533px;
@@ -283,9 +283,23 @@ onMounted(() => {
   }
 }
 
+/* Ajuste para móviles pequeños (ej. 360px) para que el recuadro entre completo */
+@media (max-width: 400px) {
+  .testimonial-card {
+    background-size: 130% 150%;
+    padding: 1rem;
+  }
+
+  .text-p{
+    font-size: .9rem;
+  }
+}
+
 @media (max-width: 470px) {
   .testimonial {
     width: 85%;
   }
+
+
 }
 </style>
