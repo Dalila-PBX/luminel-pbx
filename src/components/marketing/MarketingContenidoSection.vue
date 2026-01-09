@@ -238,7 +238,8 @@ import { marketingData } from '@/data/marketing';
 
 @media (max-width: 400px){
   .card-title {
-    width: 70%;
+    width: 90%;
+     font-size: clamp(2.7rem, 4.5vw, 3.5rem);
   }
 
   .small {
