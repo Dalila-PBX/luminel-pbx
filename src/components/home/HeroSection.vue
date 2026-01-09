@@ -30,7 +30,7 @@ import { homeData } from '@/data/home';
       </div>
       <div
         class="d-flex flex-column align-items-center gap-3 mb-4 position-absolute"
-        style="bottom: 3rem; right: 3rem; z-index: 10"
+        style="bottom: 14rem; right: 3rem; z-index: 10"
       >
         <a
           v-for="social in homeData.socialLinks"

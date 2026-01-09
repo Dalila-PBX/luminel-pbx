@@ -174,8 +174,8 @@
                 :delay="200"
                 :duration="1200">>
               <div class="sitio-info position-relative p-3 pt-5 pt-lg-0">
-                <h1 class="fw-bold text-uppercase lh-1 mb-lg-2 mb-0 sitio-title pb-lg-0 pb-4 pt-5 text-lg-start text-center">SITIO RESPONSIVO</h1>
-                <p class="sitio-text  text-light mb-1">Tu sitio se adapta a cualquier dispositivo, ofreciendo una experiencia fluida y atractiva en todas las pantallas</p>
+                <h1 class="fw-bold text-uppercase lh-1 mb-lg-2 mb-0 sitio-title pb-lg-0 pb-4 pt-5 text-lg-start text-start">SITIO RESPONSIVO</h1>
+                <p class="sitio-text  text-light mb-1">Tu sitio se adapta a cualquier dispositivo, ofreciendo una experiencia fluida y atractiva en todas las pantallas.</p>
               </div>
             </div>
           </div>

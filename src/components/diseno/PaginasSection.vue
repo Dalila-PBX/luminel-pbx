@@ -216,18 +216,19 @@ import { disenoData } from '@/data/diseno';
             <div
               class="card h-100 border-0 text-white"
               :style="{ backgroundImage: `url(${plan.bgImg})` }"
+
             >
-              <div class="card-body d-flex flex-column justify-content-between">
+              <div class="card-body  d-flex flex-column justify-content-between">
                 <!-- Grupo superior: Título y lista -->
-                <div>
+                <div >
                   <h2
-                    class="card-title display-5 fw-bold text-center text-uppercase mx-auto"
+                    class="card-title display-5  fw-bold text-center text-uppercase mx-auto"
                     :style="{ color: plan.color }"
                   >
                     {{ plan.title }}
                   </h2>
-                  <ul class="list-unstyled small text-start px-5">
-                    <li v-for="(item, index) in plan.lista" :key="index" class="mb-lg-2 mb-2">
+                  <ul class="list-unstyled small text-start px-5 ">
+                    <li v-for="(item, index) in plan.lista" :key="index" class="mb-lg-2  mb-2">
                       <i class="bi bi-check-circle-fill me-2" style="color: #4b7a27"></i>{{ item }}
                     </li>
                   </ul>
@@ -344,6 +345,8 @@ import { disenoData } from '@/data/diseno';
 .shadow-title {
   text-shadow: 6px 10px 13px rgba(0, 0, 0, 3);
 }
+
+
 
 @media (max-width: 991.98px) {
   .condicion {

@@ -78,7 +78,7 @@ onMounted(() => {
       class="float btn rounded-circle text-white d-flex justify-content-center align-items-center shadow-none border-0"
       @click="togglePopup"
     >
-      <i class="bi bi-whatsapp fs-3 mt-1"></i>
+      <i class="bi bi-whatsapp fs-3 mt-0"></i>
     </button>
 
     <!-- Círculo animado -->
