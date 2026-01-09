@@ -225,4 +225,19 @@ import { marketingData } from '@/data/marketing';
   filter: brightness(1.1);
 
 }
+
+@media (max-width: 400px){
+  .card-title {
+    width: 70%;
+    font-size: clamp(2.2rem, 4vw, 3.3rem);
+  }
+
+  .small {
+  font-size: 0.850em;
+  }
+  }
+
+  .lista-cards{
+    margin-bottom: 1rem;
+  }
 </style>

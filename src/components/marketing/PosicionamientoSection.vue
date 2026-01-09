@@ -89,7 +89,7 @@ import { marketingData } from '@/data/marketing';
                       </p>
 
                       <ul
-                        class="list-unstyled lista-planes small text-start text-dark fw-bold px-5"
+                        class="list-unstyled lista-planes small text-start text-dark fw-bold "
                       >
                         <li v-for="(item, index) in card.lista" :key="index" class="mb-lg-4 mb-2">
                           <i class="bi bi-check-circle-fill me-2" style="color: #4b7a27"></i
@@ -280,4 +280,18 @@ import { marketingData } from '@/data/marketing';
   filter: brightness(1.1);
 
 }
+@media (max-width: 400px){
+
+  .small {
+  font-size: 0.850em;
+  }
+  }
+  .lista-planes {
+    line-height: 1.8;
+    padding-left: 2.7rem;
+    padding-right: 2.7rem;
+  }
+  .lista-cards{
+    margin-bottom: 1rem;
+  }
 </style>

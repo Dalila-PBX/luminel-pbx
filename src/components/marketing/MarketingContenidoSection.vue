@@ -86,8 +86,8 @@ import { marketingData } from '@/data/marketing';
                         {{ card.nota }}
                       </p>
 
-                      <ul class="list-unstyled small text-start text-dark fw-bold px-5">
-                        <li v-for="(item, index) in card.lista" :key="index" class="mb-lg-3 mb-2">
+                      <ul class="list-unstyled  small text-start text-dark fw-bold px-5">
+                        <li v-for="(item, index) in card.lista" :key="index" class="mb-lg-3  lista-cards">
                           <i class="bi bi-check-circle-fill me-2" style="color: #4b7a27"></i
                           >{{ item }}
                         </li>
@@ -217,6 +217,9 @@ import { marketingData } from '@/data/marketing';
   .term-condiciones {
     width: 100%;
   }
+  .lista-cards{
+    margin-bottom: .5rem;
+  }
 }
 .custom-btn-despegar {
   width: 60%; /* largo del boton */
@@ -232,4 +235,18 @@ import { marketingData } from '@/data/marketing';
   filter: brightness(1.1);
 
 }
+
+@media (max-width: 400px){
+  .card-title {
+    width: 70%;
+  }
+
+  .small {
+  font-size: 0.850em;
+  }
+  }
+
+  .lista-cards{
+    margin-bottom: 1rem;
+  }
 </style>
