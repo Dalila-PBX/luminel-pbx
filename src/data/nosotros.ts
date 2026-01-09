@@ -12,8 +12,8 @@ export const nosotrosData: NosotrosData = {
 
   second: {
     textone:
-      'Nos especializamos en identidad visual, gestión de redes sociales, publicidad digital (Ads) y desarrollo web, siempre con un enfoque integral y centrado en los objetivos del cliente. <br /><br /> Nuestro propósito es claro: ayudar a las marcas aproyectarse con claridad, propósito y coherencia visual en todos sus canales, generando experiencias memorables y alineadas con su esencia. ',
-    subtitle: 'Una agencia con raíces tecnológicas',
+      'Nos especializamos en identidad visual, gestión de redes sociales, publicidad digital (Ads) y desarrollo web, siempre con un enfoque integral y centrado en los objetivos del cliente. <br /><br /> Nuestro propósito es claro: ayudar a las marcas a proyectarse con claridad, propósito y coherencia visual en todos sus canales, generando experiencias memorables y alineadas con su esencia. ',
+    subtitle: 'Una agencia con raíces tecnológicas.',
     texttwo:
       'Luminel nace como una iniciativa de INBTEL, empresa líder en soluciones de telecomunicaciones y conectividad. Esta alianza nos permite combinar la innovación tecnológica con la creatividad estratégica, ofreciendo soluciones que no solo se ven bien, sino que también funcionan y generan resultados.',
   },

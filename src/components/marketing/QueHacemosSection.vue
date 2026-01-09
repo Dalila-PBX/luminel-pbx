@@ -77,7 +77,7 @@ import { marketingData } from '@/data/marketing';
           >
             <div class="card-body d-flex flex-column justify-content-center">
               <h2 class="card-title fw-bold text-start pb-3">
-                Creamos <span style="color: #357372">presencia, <br /> </span>no solo publicaciones
+                Creamos <span style="color: #357372">presencia, <br /> </span>no solo publicaciones.
               </h2>
               <p class="card-text text-start text-black fw-semibold">
                 En Luminel transformamos tu marca en una conversación constante con su audiencia.

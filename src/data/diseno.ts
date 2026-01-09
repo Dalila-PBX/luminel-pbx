@@ -157,8 +157,7 @@ export const disenoData: DisenoData = {
           'Enlace a Redes Sociales',
           'Optimización SEO Básico',
           'Botón de WhatsApp',
-          'App Tienda',
-          '(Woocommerce)',
+          'App Tienda (Woocommerce)',
           '1 Formulario de contacto',
 
 
@@ -189,8 +188,7 @@ export const disenoData: DisenoData = {
           'Optimización SEO Escencial',
           'Indexacion en Google',
           'Botón de WhatsApp',
-          'App Tienda',
-          '(Woocomerce)',
+          'App Tienda (Woocommerce)',
           '1 Formulario de contacto',
 
       ],

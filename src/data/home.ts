@@ -106,7 +106,7 @@ export const homeData: HomeData = {
       {
         id: 1,
         quote:
-          'Este es un testimonio increíble que demuestra lo genial que es trabajar con Luminel. ¡Totalmente recomendados!',
+          '¡Totalmente recomendados! Este es un testimonio increíble que demuestra lo genial que es trabajar con Luminel.',
         name: 'Mariana de la Torre',
         title: 'Directora de Marketing en Delika',
         personImage: '/img/inicio/pelada.png',
@@ -114,7 +114,7 @@ export const homeData: HomeData = {
       {
         id: 2,
         quote:
-          'Lo que más valoro de Luminel es su capacidad para entender la vision de mi empresa y transformarla en algo visualmente poderoso. El logo que diseñaron nos dió una nueva identidad más fresca y tecnológica.',
+          'El mayor valor de Luminel es su capacidad para entender la vision de mi empresa y transformarla en algo visualmente poderoso. El logo que diseñaron nos dió una nueva identidad más fresca y tecnológica.',
         name: 'David Aldiano',
         title: 'Fundador & CEO',
         personImage: '/img/inicio/imagen2.png',
@@ -190,7 +190,7 @@ export const homeData: HomeData = {
         id: 5,
         circleImage: '/img/inicio/implementacion_5.png',
         title: 'Implementacion',
-        text: 'Implementamos las soluciones creaetivas en los distintos canales.',
+        text: 'Implementamos las soluciones creativas en los distintos canales.',
       },
     ],
   },

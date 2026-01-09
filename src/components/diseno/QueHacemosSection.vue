@@ -86,13 +86,13 @@
                 <h1 class="fw-bold text-uppercase mb-lg-2 mb-0 hacemos-title pb-lg-3 pb-4 mt-lg-5 text-center text-lg-start">¿QUÉ HACEMOS?</h1>
                 <p class="mx-auto  hacemos-text mb-1">
                   <ul class="text-light">
-                    <li class="mb-3 mb-lg-3">UI/UX personalizado</li>
-                    <li class="mb-3 mb-lg-3">Desarrollo responsivo (móvil, tablet, desktop)</li>
-                    <li class="mb-3 mb-lg-3">WordPress / CMS a medida</li>
-                    <li class="mb-3 mb-lg-3">Tiendas online (e-commerce)</li>
-                    <li class="mb-3 mb-lg-3">Integraciones (formulario, chat, CRM)</li>
-                    <li class="mb-3 mb-lg-3">SEO técnico y optimización de velocidad</li>
-                    <li class="mb-3 mb-lg-3">Diseño accesible y escalable</li>
+                    <li class="mb-3 mb-lg-3">UI/UX personalizado.</li>
+                    <li class="mb-3 mb-lg-3">Desarrollo responsivo (móvil, tablet, desktop).</li>
+                    <li class="mb-3 mb-lg-3">WordPress / CMS a medida.</li>
+                    <li class="mb-3 mb-lg-3">Tiendas online (E-commerce).</li>
+                    <li class="mb-3 mb-lg-3">Integraciones (formulario, chat, CRM).</li>
+                    <li class="mb-3 mb-lg-3">SEO técnico y optimización de velocidad.</li>
+                    <li class="mb-3 mb-lg-3">Diseño accesible y escalable.</li>
                   </ul>
                 </p>
               </div>
