@@ -28,7 +28,7 @@ import { disenoData } from '@/data/diseno';
               <p class="mx-auto diseno-text mb-1">
                 Convertimos ideas en experiencias digitales impactantes. Diseñamos sitios web
                 innovadores y funcionales que combinan estética, usabilidad y rendimiento. Con
-                Luminel,no solo tienes un sitio web; tienes una herramienta estratégica que impulsa
+                Luminel, no solo tienes un sitio web; tienes una herramienta estratégica que impulsa
                 tu marca hacia adelante.
               </p>
             </div>

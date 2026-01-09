@@ -88,7 +88,7 @@ export const homeData: HomeData = {
   nosotros: {
     title: 'Nosotros',
     subtitle:
-      'Lúminel Agencia Creativa, esta especializada en el diseño estratégico de identidad visual, la gestión de redes sociales, la publicidad digital (Ads) y el desarrollo de soluciones web. Nuestra razón de ser se fundamenta en la convicción de que toda marca debe proyectarse con claridad, propósito y coherencia visual en todos sus canales. <br /> <br /> <br />Como iniciativa derivada de la empresa INBTEL, especializada en soluciones de telecomunicaciones y conectividad, Lúminel hereda una cultura de innovación tecnológica y visión sistémica, para llevarla al terreno del diseño. Así, funcionamos como el brazo creativo de un grupo que entiende la comunicación desde múltiples dimensiones: técnica, estética y funcionalidad',
+      'Luminel Agencia Creativa, esta especializada en el diseño estratégico de identidad visual, la gestión de redes sociales, la publicidad digital (Ads) y el desarrollo de soluciones web. Nuestra razón de ser se fundamenta en la convicción de que toda marca debe proyectarse con claridad, propósito y coherencia visual en todos sus canales. <br /> <br /> <br />Como iniciativa derivada de la empresa INBTEL, especializada en soluciones de telecomunicaciones y conectividad, Luminel hereda una cultura de innovación tecnológica y visión sistémica, para llevarla al terreno del diseño. Así, funcionamos como el brazo creativo de un grupo que entiende la comunicación desde múltiples dimensiones: técnica, estética y funcionalidad',
     btnColor: '#a8c738',
     btnText: 'VER MÁS',
     btnLink: '/nosotros',
@@ -114,7 +114,7 @@ export const homeData: HomeData = {
       {
         id: 2,
         quote:
-          'Lo que más valor de Luminel es su capacidad para entender la vision de mi empresa y transformarla en algo visualmente poderoso. El logo que diseñaron nos dió una nueva identidad más fresca y tecnológica.',
+          'Lo que más valoro de Luminel es su capacidad para entender la vision de mi empresa y transformarla en algo visualmente poderoso. El logo que diseñaron nos dió una nueva identidad más fresca y tecnológica.',
         name: 'David Aldiano',
         title: 'Fundador & CEO',
         personImage: '/img/inicio/imagen2.png',

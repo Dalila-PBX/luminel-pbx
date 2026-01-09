@@ -30,7 +30,7 @@ import { nosotrosData } from '@/data/nosotros';
       >
         <h1 class="fw-bold text-uppercase mb-lg-2 mb-0 nosotros-title pb-lg-3 pb-0">Nosotros</h1>
         <p class="mx-auto nosotros-text" style="max-width: 800px">
-          En Lúminel Agencia Creativa, creemos que el diseño va más allá de lo visual: es una
+          En Luminel Agencia Creativa, creemos que el diseño va más allá de lo visual: es una
           herramienta estratégica que conecta, comunica y construye marcas sólidas.
         </p>
       </div>
