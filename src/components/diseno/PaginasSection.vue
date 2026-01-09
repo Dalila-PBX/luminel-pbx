@@ -63,7 +63,7 @@ import { disenoData } from '@/data/diseno';
                   </ul>
                 </div>
                 <!-- Grupo inferior: Subtítulo, precio y botón -->
-                <div>
+                <div class="grupo-inferior">
                   <h4 class="card-subtitle mb-0 text-center fw-bold">{{ plan.subtitle }}</h4>
                   <p class="text-center small fw-bold m-0">{{ plan.desc1 }}</p>
                   <p class="text-center small fw-bold">{{ plan.desc2 }}</p>
@@ -123,7 +123,7 @@ import { disenoData } from '@/data/diseno';
                   </ul>
                 </div>
                 <!-- Grupo inferior: Subtítulo, precio y botón -->
-                <div>
+                <div class="grupo-inferior">
                   <h4 class="card-subtitle mb-0 text-center fw-bold">{{ plan.subtitle }}</h4>
                   <p class="text-center small fw-bold m-0">{{ plan.desc1 }}</p>
                   <p class="text-center small fw-bold">{{ plan.desc2 }}</p>
@@ -233,7 +233,7 @@ import { disenoData } from '@/data/diseno';
                   </ul>
                 </div>
                 <!-- Grupo inferior: Subtítulo, precio y botón -->
-                <div>
+                <div class="grupo-inferior">
                   <h4 class="card-subtitle mb-0 text-center fw-bold">{{ plan.subtitle }}</h4>
                   <p class="text-center small fw-bold m-0">{{ plan.desc1 }}</p>
                   <p class="text-center small fw-bold">{{ plan.desc2 }}</p>
@@ -297,6 +297,9 @@ import { disenoData } from '@/data/diseno';
   margin-top: 3rem;
 }
 
+.grupo-inferior{
+  padding-right: 15px;
+}
 .card-subtitle {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(1rem, 1vw + 0.75rem, 1.3rem);

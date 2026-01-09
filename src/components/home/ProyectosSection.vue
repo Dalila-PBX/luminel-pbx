@@ -43,7 +43,7 @@ import { RouterLink } from 'vue-router';
               class="img-fluid img-down"
             />
             </RouterLink>
-            
+
           </div>
         </div>
       </div>
@@ -66,14 +66,21 @@ import { RouterLink } from 'vue-router';
 
 .img-debajo {
   background-size: contain;
-  background-position: center;
+  background-position: start;
   background-repeat: no-repeat;
   min-height: 500px;
+}
+
+@media (max-width: 992px) {
+  .img-debajo{
+    background-position: center;
+  }
 }
 
 @media (max-width: 575.98px) {
   .img-debajo {
     min-height: 215px;
+
   }
 
   .img-up {

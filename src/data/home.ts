@@ -54,7 +54,7 @@ export const homeData: HomeData = {
   services: [
     {
       title: 'Branding',
-      desc: 'Desde la creación de logotipos hasta el desarrollo de una paleta de colores cohesiva, nuestro enfoque fortalece la presencia visual de tu marca',
+      desc: 'Desde la creación de logotipos hasta el desarrollo de una paleta de colores cohesiva, nuestro enfoque fortalece la presencia visual de tu marca.',
       img: '/img/inicio/branding.png',
       bgColor: '#00B1BC',
       btnColor: '#004A59',
