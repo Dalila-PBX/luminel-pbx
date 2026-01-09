@@ -91,7 +91,7 @@ onUnmounted(() => {
               />
             </RouterLink>
             <!-- Links de Navegación -->
-            <ul class="navbar-nav d-inline-flex pt-1 pt-md-3 pt-lg-0 mt-1 fw-bold text-uppercase">
+            <ul class="navbar-nav d-inline-flex pt-1 pt-md-3 pt-lg-0 mt-2 fw-bold text-uppercase">
               <li class="nav-item">
                 <RouterLink to="/" class="nav-link mx-2 mx-lg-3 text-white" @click="closeMenu">
                   Inicio
@@ -191,6 +191,7 @@ onUnmounted(() => {
 /* Para asegurar que los links se vean blancos si el fondo es oscuro */
 .nav-link {
   transition: color 0.3s ease;
+  font-size: 18px;
 }
 
 .nav-link:hover {
