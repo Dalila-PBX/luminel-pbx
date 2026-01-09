@@ -103,4 +103,11 @@ import { nosotrosData } from '@/data/nosotros';
     width: 70%;
   }
 }
+
+@media (max-width: 400px){
+  .content-layer{
+    width: 170%;
+    height: 80%;
+  }
+}
 </style>

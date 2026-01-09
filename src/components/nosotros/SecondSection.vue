@@ -164,4 +164,10 @@ import { nosotrosData } from '@/data/nosotros';
 .card-text {
   width: 90%;
 }
+
+@media (max-width: 400px){
+  .card-title {
+  width: 90%;
+}
+}
 </style>
