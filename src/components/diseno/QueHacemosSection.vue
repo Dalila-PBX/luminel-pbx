@@ -73,7 +73,7 @@
           <div class="row align-items-center">
 
             <div
-                class="col-lg-6 col-12 d-none d-lg-block img-izq"
+                class="col-lg-6 col-12  img-izq"
                 :style="{backgroundImage: `url(${disenoData.hacemos.imgIzq})`}"
                 v-motion-fade-visible
                 :delay="200"
@@ -162,7 +162,7 @@
         <div class="container mt-lg-5 mt-4 mb-5">
           <div class="row align-items-start pt-lg-5 ">
             <div
-                class="col-lg-8 col-12 d-none d-lg-block img-izq2"
+                class="col-lg-8 col-12  img-izq2"
                 :style="{backgroundImage: `url(${disenoData.hacemos.imgIzq2})`}"
                 v-motion-slide-visible-left
                 :delay="200"
@@ -174,7 +174,7 @@
                 :delay="200"
                 :duration="1200">>
               <div class="sitio-info position-relative p-3 pt-5 pt-lg-0">
-                <h1 class="fw-bold text-uppercase lh-1 mb-lg-2 mb-0 sitio-title pb-lg-0 pb-4 pt-5 text-lg-start text-start">SITIO RESPONSIVO</h1>
+                <h1 class="fw-bold text-uppercase lh-1 mb-lg-2 mb-0 sitio-title pb-lg-0 pb-4 pt-0 pt-lg-5 text-lg-start text-start">SITIO RESPONSIVO</h1>
                 <p class="sitio-text  text-light mb-1">Tu sitio se adapta a cualquier dispositivo, ofreciendo una experiencia fluida y atractiva en todas las pantallas.</p>
               </div>
             </div>
@@ -238,6 +238,16 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  @media (max-width: 991.98px) {
+    .img-izq {
+      min-height: 300px; /* Reducimos la altura a la mitad en móviles */
+    }
+    /* Forzamos un padding menor en el texto para quitar la separación excesiva */
+    .text-content {
+      padding-top: 1rem !important;
+    }
   }
 
   .hacemos-title{
@@ -359,6 +369,15 @@
 
   }
 
+  @media (max-width: 991.98px) {
+    .img-izq2 {
+      min-height: 250px; /* Reducimos la altura a la mitad en móviles */
+    }
+    /* Forzamos un padding menor en el texto para quitar la separación excesiva */
+    .text-content {
+      padding-top: 1rem !important;
+    }
+  }
 
   @media(max-width: 768px){
   .section-hacemos{
