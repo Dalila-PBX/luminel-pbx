@@ -19,7 +19,15 @@ import { nosotrosData } from '@/data/nosotros';
       </div>
     </div>
 
-    <div class="container pt-5">
+
+  </section>
+
+  <section class="hero-main-2 hero-diferencia"
+    :style="{
+      '--bg-desktop': `url(${nosotrosData.secondBackground})`,
+      '--bg-mobile': `url(${nosotrosData.secondBackgroundMobile})`
+    } as any">
+    <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="col-12 pb-0">
           <h2
@@ -71,6 +79,14 @@ import { nosotrosData } from '@/data/nosotros';
 .hero-main {
   background-size: cover;
   background-position: top;
+  background-repeat: no-repeat;
+
+  padding: 5rem 0;
+  margin-bottom: -1px; /* Elimina la línea blanca entre el componente y el footer */
+}
+.hero-main-2 {
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 
   padding: 5rem 0;
@@ -165,6 +181,37 @@ import { nosotrosData } from '@/data/nosotros';
   width: 90%;
 }
 
+/* Estilos específicos para la sección de Diferencia con fondo responsivo */
+.hero-diferencia {
+  background-image: var(--bg-desktop);
+}
+
+@media (max-width: 991.98px) {
+  .hero-main-2{
+    padding-top: 40px;
+  }
+  .hero-diferencia {
+    background-image: var(--bg-mobile);
+  }
+
+  .display-text{
+    padding-top: 0rem;
+  }
+
+  .cards-container{
+    padding-top: 0rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .hero-diferencia {
+    background-image: var(--bg-mobile);
+  }
+
+  .display-text{
+    padding-top: 0rem;
+  }
+}
 @media (max-width: 400px){
   .card-title {
   width: 90%;

@@ -9,6 +9,7 @@ export const nosotrosData: NosotrosData = {
   nosotrosBackground: '/img/nosotros/BANNER_FOTOS2.png',
 
   secondBackground: '/img/nosotros/FONDO.png',
+  secondBackgroundMobile: '/img/nosotros/responsive_nosotros_1.png', // <--- Asegúrate de crear esta imagen o cambiar la ruta
 
   second: {
     textone:

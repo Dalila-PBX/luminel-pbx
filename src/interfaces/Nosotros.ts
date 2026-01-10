@@ -29,6 +29,7 @@ export interface NosotrosData{
   nosotros: NosotrosContent;
   nosotrosBackground: string;
   secondBackground: string;
+  secondBackgroundMobile: string;
   second: SecondNosotros;
   nosotrosDerecho:string;
   diferencia: NosDiferencia;
