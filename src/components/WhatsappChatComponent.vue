@@ -49,7 +49,7 @@ onMounted(() => {
             height="50"
           />
           <p class="m-0 text-secondary small" style="font-family: 'Montserrat', sans-serif">
-            Hola, ¿en qué podemos ayudarle?
+            Hola, ¿en qué podemos ayudarte?
           </p>
         </div>
       </div>

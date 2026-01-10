@@ -44,7 +44,7 @@
     {
       id: 5,
       title: 'Lanzamos y evaluamos',
-      content: 'Acompañamosy ajustamos.',
+      content: 'Acompañamos y ajustamos.',
       isOpen: false,
       color: '#f5d62a' // Naranja
     },

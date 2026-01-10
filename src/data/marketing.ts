@@ -100,7 +100,7 @@ export const marketingData: MarketingData = {
       btnColor: '#00b1bc',
     },
     {
-      title: 'Posteo Estandar',
+      title: 'Posteo Estándar',
       precio: '$3,800',
       nota: '($2,000 de pauta publicitaria incluida)',
       lista: [
