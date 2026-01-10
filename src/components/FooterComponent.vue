@@ -49,13 +49,21 @@ const updateAnimations = () => {
     footerDetails.classList.remove('animate-down');
     footerDetails.classList.add('animate-up');
   }
+  // Eliminamos el bloque else para evitar que la animación de salida se active
+  // con el rebote (rubber-banding) de iOS.
 };
 
 // Detectar dirección del scroll
 const handleScroll = () => {
   const currentScroll = window.scrollY;
+
+  // Detectar si estamos en la parte inferior de la página (incluyendo rebote iOS)
+  // Usamos un margen de 100px para cubrir la zona de rebote
+  const isAtBottom = (window.innerHeight + currentScroll) >= (document.documentElement.scrollHeight - 100);
+
   if (Math.abs(currentScroll - lastScroll) > 0) {
-    isScrollingDown = currentScroll > lastScroll;
+    // Si estamos al final (isAtBottom), forzamos "true" para mantener el footer visible
+    isScrollingDown = isAtBottom ? true : currentScroll > lastScroll;
     updateAnimations();
   }
   lastScroll = currentScroll;
