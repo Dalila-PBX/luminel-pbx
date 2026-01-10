@@ -194,8 +194,9 @@ onUnmounted(() => {
   font-size: 18px;
 }
 
-.nav-link:hover {
-  color: #a8c738 !important; /* Color al pasar el mouse */
+.nav-link:hover,
+.nav-link.router-link-exact-active {
+  color: #a8c738 !important; /* Color al pasar el mouse y link activo */
 }
 
 /* Ajuste para el botón hamburguesa en fondo oscuro */
