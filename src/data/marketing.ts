@@ -1,4 +1,7 @@
 import type {MarketingData} from '@/interfaces/Marketing';
+import planCrecec from '/img/marketing/PLANCRECEC.png';
+import paquete3 from '/img/marketing/PAQUETE3.png';
+
 
 export const marketingData: MarketingData = {
 
@@ -163,8 +166,8 @@ export const marketingData: MarketingData = {
         'Configuración Inicial Google Analytics',
         'Indexación en Google ADS y SEO avanzado',
       ],
-      bgImg: 'img/marketing/PLANCRECEC.png',
-      bgImgMobile: 'img/marketing/PAQUETE3.png',
+      bgImg: planCrecec,
+      bgImgMobile: paquete3,
       btnColor: '#5F8F2B',
     },
   ],
