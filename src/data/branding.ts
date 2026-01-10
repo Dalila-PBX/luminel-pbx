@@ -58,7 +58,7 @@ export const brandingData: BrandingData = {
     id: 7,
     title: 'Diseño Publicitario',
     category: '',
-    imgSrc: '/img/branding/tarjeta7.png',
+    imgSrc: '/img/branding/tarjeta7.1.png',
     link: '#',
   },
   {
