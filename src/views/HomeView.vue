@@ -10,6 +10,17 @@ import ProcesoSection from '@/components/home/ProcesoSection.vue';
 import PorqueLuminel from '@/components/home/PorqueLuminel.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { isLoading } from '@/composables/useGlobalLoader';
+import { useHead } from '@unhead/vue';
+
+useHead({
+  title: 'Luminel | Inicio',
+  meta: [
+    {
+      name: 'description',
+      content: 'Agencia creativa especializada en branding, diseño web y marketing digital. Iluminamos tu creatividad y potenciamos tu comunicación.',
+    },
+  ],
+});
 
 onMounted(() => {
   isLoading.value = true; // Aseguramos que empiece cargando

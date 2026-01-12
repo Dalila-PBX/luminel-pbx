@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 
-const routes: RouteRecordRaw[] = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
@@ -41,7 +41,7 @@ const router = createRouter({
   scrollBehavior(_to, _from, _savedPosition) {
     return { top: 0 };
   },
-}); 
+});
 
 //actualiza el titulo de la pestaña despues de cada navegacion
 router.afterEach((to) => {

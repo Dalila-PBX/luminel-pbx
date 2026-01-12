@@ -6,6 +6,17 @@ import GreenLineSection from '@/components/branding/GreenLineSection.vue';
 import PaquetesSection from '@/components/branding/PaquetesSection.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { isLoading } from '@/composables/useGlobalLoader';
+import { useHead } from '@unhead/vue';
+
+useHead({
+  title: 'Luminel | Branding',
+  meta: [
+    {
+      name: 'description',
+      content: 'Servicios de branding y diseño de identidad visual. Creamos marcas memorables que conectan con tu audiencia.',
+    },
+  ],
+});
 
 onMounted(() => {
   isLoading.value = true;

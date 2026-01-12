@@ -4,6 +4,17 @@ import NosotrosHeroSection from '@/components/nosotros/NosotrosHeroSection.vue';
 import SecondSection from '@/components/nosotros/SecondSection.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { isLoading } from '@/composables/useGlobalLoader';
+import { useHead } from '@unhead/vue';
+
+useHead({
+  title: 'Luminel | Nosotros',
+  meta: [
+    {
+      name: 'description',
+      content: 'Conoce a Luminel, agencia creativa con raíces tecnológicas. Transformamos marcas con estrategia, diseño y tecnología.',
+    },
+  ],
+});
 
 onMounted(() => {
   isLoading.value = true;

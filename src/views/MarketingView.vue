@@ -8,6 +8,17 @@ import MetaAdsSection from '@/components/marketing/MetaAdsSection.vue';
 import PosicionamientoSection from '@/components/marketing/PosicionamientoSection.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { isLoading } from '@/composables/useGlobalLoader';
+import { useHead } from '@unhead/vue';
+
+useHead({
+  title: 'Luminel | Marketing',
+  meta: [
+    {
+      name: 'description',
+      content: 'Estrategias de marketing digital, gestión de redes sociales y publicidad online para hacer crecer tu negocio.',
+    },
+  ],
+});
 
 onMounted(() => {
   isLoading.value = true;

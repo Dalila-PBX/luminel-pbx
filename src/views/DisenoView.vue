@@ -6,6 +6,17 @@ import CarruselSection from '@/components/diseno/CarruselSection.vue';
 import PaginasSection from '@/components/diseno/PaginasSection.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { isLoading } from '@/composables/useGlobalLoader';
+import { useHead } from '@unhead/vue';
+
+useHead({
+  title: 'Luminel | Diseño Web',
+  meta: [
+    {
+      name: 'description',
+      content: 'Diseño y desarrollo web a medida. Sitios responsivos, optimizados y enfocados en la experiencia de usuario (UI/UX).',
+    },
+  ],
+});
 
 onMounted(() => {
   isLoading.value = true;
