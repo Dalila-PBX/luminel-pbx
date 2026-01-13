@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { RouterLink } from 'vue-router';
-import * as bootstrap from 'bootstrap';
 import { isLoading } from '@/composables/useGlobalLoader';
 
 const isScrolled = ref(false);
@@ -19,20 +18,22 @@ const headerClasses = computed(() => {
   };
 });
 
-const toggleMenu = () => {
+const toggleMenu = async () => {
+  const { Collapse } = await import('bootstrap');
   const navbarCollapse = document.getElementById('navbarSupportedContent');
   if (navbarCollapse) {
-    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
+    const bsCollapse = Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
     bsCollapse.toggle();
   }
 };
 
-const closeMenu = () => {
+const closeMenu = async () => {
+  const { Collapse } = await import('bootstrap');
   const navbarCollapse = document.getElementById('navbarSupportedContent');
   if (navbarCollapse && navbarCollapse.classList.contains('show')) {
     // Usamos getOrCreateInstance para garantizar que obtenemos la instancia de Bootstrap
     // Esto soluciona el problema si la instancia no fue creada previamente por JS
-    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
+    const bsCollapse = Collapse.getOrCreateInstance(navbarCollapse, { toggle: false });
     bsCollapse.hide();
   }
 };

@@ -8,7 +8,6 @@ import { routes } from './router'
 
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 import { MotionPlugin } from '@vueuse/motion';
 
@@ -24,6 +23,9 @@ export const createApp = ViteSSG(
     app.use(MotionPlugin)
 
     if (isClient) {
+      // Importar JS de Bootstrap solo en el cliente para evitar errores de 'document is not defined'
+      import('bootstrap/dist/js/bootstrap.bundle.min.js')
+
       router.afterEach((to) => {
         const defaultTitle = 'Luminel';
         const title = to.meta.title as string;

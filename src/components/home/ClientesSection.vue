@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { homeData } from '@/data/home';
-import * as bootstrap from 'bootstrap';
 
 const carouselRef = ref<HTMLElement | null>(null);
 
-onMounted(() => {
+onMounted(async () => {
   if (carouselRef.value) {
-    new bootstrap.Carousel(carouselRef.value, {
+    const { Carousel } = await import('bootstrap');
+    new Carousel(carouselRef.value, {
       interval: 5000, // Opcional: Cambia de slide cada 5 segundos
       touch: true, // Opcional: Permite deslizar en móviles
     });
