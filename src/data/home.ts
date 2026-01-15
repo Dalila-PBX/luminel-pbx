@@ -189,7 +189,7 @@ export const homeData: HomeData = {
       {
         id: 5,
         circleImage: '/img/inicio/implementacion_5.png',
-        title: 'Implementacion',
+        title: 'Implementación',
         text: 'Implementamos las soluciones creativas en los distintos canales.',
       },
     ],

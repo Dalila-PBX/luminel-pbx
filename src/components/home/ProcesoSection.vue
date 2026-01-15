@@ -73,7 +73,7 @@ import { homeData } from '@/data/home';
 
 .card-title {
   color: #ffffff; /* Color blanco para el título */
-  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.7rem);
   width: 85%;
   padding: 0 5px;
   line-height: 1.1;
