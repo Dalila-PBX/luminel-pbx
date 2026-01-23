@@ -106,47 +106,47 @@ export const homeData: HomeData = {
       {
         id: 1,
         quote:
-          '¡Totalmente recomendados! Este es un testimonio increíble que demuestra lo genial que es trabajar con Luminel.',
-        name: 'Mariana de la Torre',
-        title: 'Directora de Marketing en Delika',
-        personImage: '/img/inicio/pelada.png',
+          '"Al contratar mi página web con Luminel Agencia Creativa, recibí una atención personalizada, y mis dudas fueron resueltas. Consultaron en cada momento los detalles de diseño e información. ¡Terminé contento con mi proyecto!"',
+        name: 'Carlos Villareal',
+        title: 'Gerente de Operaciones de JRH Transportes y Logística.',
+        personImage: '/img/inicio/p1.png',
       },
       {
         id: 2,
         quote:
-          'El mayor valor de Luminel es su capacidad para entender la vision de mi empresa y transformarla en algo visualmente poderoso. El logo que diseñaron nos dió una nueva identidad más fresca y tecnológica.',
-        name: 'David Aldiano',
-        title: 'Fundador & CEO',
-        personImage: '/img/inicio/imagen2.png',
+          '"Muchísimas gracias, son un equipo creativo lleno de personas muy profesionales. Quedé encantada con la página web."',
+        name: 'Elena Kostic ',
+        title: 'Coordinadora de Capital Humano.',
+        personImage: '/img/inicio/p2.png',
       },
       {
         id: 3,
         quote:
-          'Buscábamos un sitio web que fuera funcional y estéticamente impecable. El equipo de Luminel superó nuestras expectativas con una plataforma rápida y optimizada. Su eficiencia en los tiempos de entrega es, sin duda, su mayor valor diferencial. ',
-        name: 'Roberto Sánchez',
-        title: 'Co-Fundador de Casa del Río ',
-        personImage: '/img/inicio/imagen3.png',
+          '"Me encuentro satisfecho con la creación de mi sitio web, su propuesta de concepto, y maqueta de diseño me pareció adecuada para lo que buscaba. Muchas gracias." ',
+        name: 'Mariana de la Torre ',
+        title: 'Administradora de Marketing Delika.',
+        personImage: '/img/inicio/p4.png',
       },
       {
         id: 4,
         quote:
-          'Gracias a Luminel logramos renovar nuestra esencia. El logo que diseñaron capturó perfectamente la elegancia que queríamos transmitir. Son expertos en transformar conceptos abstractos en una identidad visual poderosa y moderna que conecta con el público. ',
-        name: 'Elena Kostic ',
-        title: 'CEO de Nova ',
-        personImage: '/img/inicio/imagen4.png',
+          '"Posterior a la entrega de mi proyecto de página web, de la cual obtuve grandes resultados, pensé en la evolución de mi marca. Ellos me orientaron, y decidí iniciar un nuevo plan, pero ahora de Marketing. Se encargaron de el diseño, y programación de esta increíble publicidad."',
+        name: 'David Aldiano',
+        title: 'Asistente de Dirección.',
+        personImage: '/img/inicio/p1.png',
       },
       {
         id: 5,
         quote:
-          'Trabajar con Luminel ha sido la mejor decisión para nuestra digitalización. Su servicio es impecable y la eficacia con la que resuelven cada detalle nos dio mucha confianza. Es una agencia creativa que realmente se compromete con el éxito de sus clientes.',
-        name: 'Carlos Villarreal',
-        title: 'Gerente General de JRH Transportes y Logística',
-        personImage: '/img/inicio/pelon.png',
+          '"Decidí brindarle un giro distinto a la imagen corporativa de mi empresa. Y como anteriormente había quedado encantado con mi página web, decidí renovar nuestras charlas. Me ofrecieron una página fresca, y mejorada. Los resultados se ven".',
+        name: 'Roberto sanchez ',
+        title: 'Socio de Casa del Río.',
+        personImage: '/img/inicio/p3.png',
       },
     ],
   },
 
-  //----Seccion Nuestros Clientes Dicen ----
+  //----Seccion Proyetos ----
   proyectsBackground: '/img/inicio/fondo_proyectos.png',
 
   proyects: {
