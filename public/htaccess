@@ -1,0 +1,22 @@
+RewriteEngine on
+
+# 1. Mantiene redirección de dominio (NO TOCAR)
+RewriteCond %{HTTP_HOST} ^luminel\.com\.mx$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.luminel\.com\.mx$
+RewriteRule ^/?$ "https\:\/\/luminel\.mx\/" [R=301,L]
+
+# 2. Reglas para Vue Router (Single Page Application)
+<IfModule mod_rewrite.c>
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# 3. Configuración de PHP (NO TOCAR)
+# php -- BEGIN cPanel-generated handler, do not edit
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
