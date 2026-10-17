@@ -31,4 +31,10 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/MarketingView.vue'),
     meta: { title: 'Luminel | Marketing' },
   },
+  {
+    path: '/contacto',
+    name: 'contacto',
+    component: () => import('@/views/ContactoView.vue'),
+    meta: { title: 'Luminel | Contacto'},
+  },
 ];

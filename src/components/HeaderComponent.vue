@@ -134,6 +134,15 @@ onUnmounted(() => {
                   Marketing
                 </RouterLink>
               </li>
+              <li class="nav-item">
+                <RouterLink
+                  to="/contacto"
+                  class="nav-link mx-2 mx-lg-3 text-white"
+                  @click="closeMenu"
+                >
+                  Contacto
+                </RouterLink>
+              </li>
             </ul>
           </div>
         </div>
