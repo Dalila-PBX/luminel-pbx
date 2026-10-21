@@ -162,7 +162,6 @@ $mensaje_html = "
 
     <!-- RESULTADO INTERNO DE VENTAS — USO DE LUMINEL -->
     <div class='sales-box'>
-      <span class='sales-tag'>🎯 RESULTADO INTERNO DE VENTAS — USO DE LUMINEL</span>
       <div class='sales-title'>Necesidad prioritaria detectada:</div>
       <div class='sales-main-service'>{$necesidad_prioritaria}</div>
 
@@ -193,7 +192,7 @@ $mensaje_html = "
     </div>
 
     <!-- DATOS DE CONTACTO -->
-    <div class='section-title'>👤 Datos Generales del Prospecto</div>
+    <div class='section-title'> Datos Generales del Prospecto</div>
     <table>
       <tr>
         <td class='label'>Nombre del contacto:</td>
@@ -201,10 +200,7 @@ $mensaje_html = "
       </tr>
       <tr>
         <td class='label'>WhatsApp / teléfono:</td>
-        <td class='value'>
-          {$telefono}<br>
-          <a href='{$whatsapp_link}' target='_blank' class='btn-wapp'>📱 Abrir chat de WhatsApp</a>
-        </td>
+        <td class='value'>{$telefono}</td>
       </tr>
       <tr>
         <td class='label'>Correo electrónico:</td>
@@ -213,7 +209,7 @@ $mensaje_html = "
     </table>
 
     <!-- OBJETIVO DEL NEGOCIO Y RESOLUCIÓN ESPECÍFICA -->
-    <div class='section-title'>🎯 Objetivo y Prioridad del Cliente</div>
+    <div class='section-title'> Objetivo y Prioridad del Cliente</div>
     <table>
       <tr>
         <td class='label'>¿Qué le gustaría mejorar primero?</td>
@@ -283,7 +279,7 @@ $mensaje_html = "
 
     <div class='footer'>
       Este correo fue generado automáticamente desde el formulario de Diagnóstico Digital de Luminel.<br>
-      Para contactar al prospecto, puedes responder a este correo o iniciar chat en WhatsApp directamente.
+    
     </div>
   </div>
 </body>

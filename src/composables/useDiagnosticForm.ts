@@ -216,7 +216,7 @@ export const useDiagnosticForm = () => {
     let webOffer = 'No especificado';
     if (d.website.hasWebsite === 'no') {
       webStatus = 'Sin sitio web';
-      webOffer = 'Desarrollo de nuevo Sitio Web o Landing Page profesional para presentar servicios y captar clientes desde Google.';
+      webOffer = 'Desarrollo de nuevo Sitio Web o Landing Page profesional para presentar servicios o captar clientes desde Google.';
     } else if (d.website.hasWebsite === 'si') {
       const needsMobile = d.website.mobileFriendly === 'no' || d.website.mobileFriendly === 'revision';
       const needsUpdate = d.website.alignedWithBrand === 'no' || d.website.alignedWithBrand === 'actualizar';
