@@ -1,317 +1,320 @@
-import { reactive, computed, ref } from 'vue';
-
-export type TriState = 'si' | 'parcialmente' | 'no' | '';
-export type BinaryState = 'si' | 'no' | '';
-export type TriStateWithRevision = 'si' | 'no' | 'revision' | '';
+import { reactive, ref, computed } from 'vue';
 
 export interface DiagnosticFormData {
   general: {
-    businessName: string;
-    industry: string;
-    location: string;
-    contactInfo: string;
-    contactInfoDos: string;
-    
+    contactName: string;
+    phone: string;
+    email: string;
   };
-  visualIdentity: {
-    hasDefinedIdentity: TriState;
-    consistentSocialMedia: TriState;
-    infoCompleteAndUpdated: TriState;
-    contentCommunicatesClearly: TriState;
+  brandIdentity: {
+    // 1. ¿Tu negocio cuenta con un logotipo y una imagen de marca definidos?
+    logoDefined: 'si_definidos' | 'logo_mejorar' | 'no_crear' | '';
+    // 2. ¿Tus publicaciones mantienen un estilo visual consistente?
+    visualConsistency: 'si' | 'algunas' | 'no_mejorar' | '';
+  };
+  socialContent: {
+    // 3. ¿Publicas contenido de manera constante en tus redes sociales?
+    postingFrequency: 'si_constante' | 'de_vez_en_cuando' | 'no_publico' | '';
+    // 4. ¿Tus publicaciones reflejan o ayudan a explicar tus servicios y atraer clientes?
+    explainsServices: 'si' | 'algunas_veces' | 'no_seguro' | '';
   };
   website: {
-    hasWebsite: BinaryState;
-    mobileFriendly: TriStateWithRevision;
-    infoUpdated: BinaryState;
-    facilitatesContact: BinaryState;
+    // 5. ¿Tu negocio cuenta con página web?
+    hasWebsite: 'si' | 'no' | '';
+    // 6. ¿Tu página se visualiza correctamente en celulares?
+    mobileFriendly: 'si' | 'no' | 'revision' | '';
+    // 7. ¿La página que tienes actualmente, esta alineada a tu marca?
+    alignedWithBrand: 'si' | 'no' | 'actualizar' | '';
   };
-  digitalAdvertising: {
-    doesOnlineAds: BinaryState;
-    isEffective: TriStateWithRevision;
+  advertising: {
+    // 8. ¿Actualmente inviertes en publicidad para promocionar tu negocio?
+    investsInAds: 'no' | 'meta' | 'google' | 'ambas' | '';
+    // 9. ¿Qué resultados estás obteniendo?
+    results: 'recibo_clientes' | 'casi_no' | 'no_medir' | '';
+  };
+  businessGoal: {
+    // 10. ¿Qué te gustaría mejorar primero?
+    priorityGoal: 'marca_profesional' | 'publicaciones_contenido' | 'pagina_web' | 'mas_clientes_pauta' | 'orientacion' | '';
+    // 11. ¿Hay algo específico que te gustaría mejorar o resolver?
+    specificDetail: string;
   };
 }
 
-const getTodayDateString = () => {
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const dd = String(today.getDate()).padStart(2, '0');
-  return `${yyyy}-${mm}-${dd}`;
+export const LABELS = {
+  logoDefined: {
+    si_definidos: 'Sí, ambos están definidos',
+    logo_mejorar: 'Tengo logotipo, pero necesito mejorar mi imagen',
+    no_crear: 'No, necesito crear mi identidad de marca',
+  },
+  visualConsistency: {
+    si: 'Sí',
+    algunas: 'Algunas sí y otras no',
+    no_mejorar: 'No, necesito mejorar su apariencia',
+  },
+  postingFrequency: {
+    si_constante: 'Sí, de manera constante',
+    de_vez_en_cuando: 'De vez en cuando',
+    no_publico: 'Actualmente no publico',
+  },
+  explainsServices: {
+    si: 'Sí',
+    algunas_veces: 'Algunas veces',
+    no_seguro: 'No estoy seguro(a) / necesito mejorar mi contenido',
+  },
+  hasWebsite: {
+    si: 'Sí',
+    no: 'No',
+  },
+  mobileFriendly: {
+    si: 'Sí',
+    no: 'No',
+    revision: 'Necesita revisión',
+  },
+  alignedWithBrand: {
+    si: 'Sí',
+    no: 'No',
+    actualizar: 'Solo requiere actualizarse',
+  },
+  investsInAds: {
+    no: 'No, todavía no',
+    meta: 'Sí, en Facebook o Instagram',
+    google: 'Sí, en Google',
+    ambas: 'Sí, en ambas plataformas',
+  },
+  results: {
+    recibo_clientes: 'Recibo consultas o clientes',
+    casi_no: 'Invierto, pero casi no recibo resultados',
+    no_medir: 'No sé cómo medir los resultados',
+  },
+  priorityGoal: {
+    marca_profesional: 'Tener una imagen de marca más profesional',
+    publicaciones_contenido: 'Mejorar mis publicaciones y contenido',
+    pagina_web: 'Tener una página web o mejorar la que ya tengo',
+    mas_clientes_pauta: 'Conseguir más clientes mediante publicidad',
+    orientacion: 'No estoy seguro(a); necesito orientación',
+  },
 };
 
 const createInitialState = (): DiagnosticFormData => ({
   general: {
-    businessName: '',
-    industry: '',
-    location: '',
-    contactInfo: '',
-    contactInfoDos: '',
-    
+    contactName: '',
+    phone: '',
+    email: '',
   },
-  visualIdentity: {
-    hasDefinedIdentity: '',
-    consistentSocialMedia: '',
-    infoCompleteAndUpdated: '',
-    contentCommunicatesClearly: '',
+  brandIdentity: {
+    logoDefined: '',
+    visualConsistency: '',
+  },
+  socialContent: {
+    postingFrequency: '',
+    explainsServices: '',
   },
   website: {
     hasWebsite: '',
     mobileFriendly: '',
-    infoUpdated: '',
-    facilitatesContact: '',
+    alignedWithBrand: '',
   },
-  digitalAdvertising: {
-    doesOnlineAds: '',
-    isEffective: '',
+  advertising: {
+    investsInAds: '',
+    results: '',
+  },
+  businessGoal: {
+    priorityGoal: '',
+    specificDetail: '',
   },
 });
 
 export const useDiagnosticForm = () => {
   const formData = reactive<DiagnosticFormData>(createInitialState());
-  const selectedStyle = ref<'bento' | 'wizard' | 'luxury'>('bento');
 
   const resetForm = () => {
     Object.assign(formData, createInitialState());
   };
 
   const fillSampleData = () => {
-    formData.general.businessName = 'Café & Co. Luminaria';
-    formData.general.industry = 'Restaurante / Cafetería de Especialidad';
-    formData.general.location = 'Ciudad de México, Roma Norte';
-    formData.general.contactInfo = '+52 55 1234 5678';
-    formData.general.contactInfoDos = 'contacto@luminaria.mx';
-    
+    formData.general.contactName = 'Valeria Méndez';
+    formData.general.phone = '+52 55 8789 4847';
+    formData.general.email = 'valeria.mendez@ejemplo.com';
 
-    formData.visualIdentity.hasDefinedIdentity = 'parcialmente';
-    formData.visualIdentity.consistentSocialMedia = 'si';
-    formData.visualIdentity.infoCompleteAndUpdated = 'si';
-    formData.visualIdentity.contentCommunicatesClearly = 'parcialmente';
+    formData.brandIdentity.logoDefined = 'logo_mejorar';
+    formData.brandIdentity.visualConsistency = 'algunas';
+
+    formData.socialContent.postingFrequency = 'de_vez_en_cuando';
+    formData.socialContent.explainsServices = 'algunas_veces';
 
     formData.website.hasWebsite = 'si';
     formData.website.mobileFriendly = 'revision';
-    formData.website.infoUpdated = 'si';
-    formData.website.facilitatesContact = 'si';
+    formData.website.alignedWithBrand = 'actualizar';
 
-    formData.digitalAdvertising.doesOnlineAds = 'si';
-    formData.digitalAdvertising.isEffective = 'revision';
+    formData.advertising.investsInAds = 'meta';
+    formData.advertising.results = 'casi_no';
+
+    formData.businessGoal.priorityGoal = 'mas_clientes_pauta';
+    formData.businessGoal.specificDetail = 'Queremos aumentar las ventas de nuestra nueva línea y unificar la imagen en redes y sitio web.';
   };
 
-  // Calcular score por categorías y global
-  const scores = computed(() => {
-    // 1. Identidad Visual (4 preguntas, max 400 pts)
-    const idMap: Record<string, number> = { si: 100, parcialmente: 50, no: 0, '': 0 };
-    const idQuestions = [
-      formData.visualIdentity.hasDefinedIdentity,
-      formData.visualIdentity.consistentSocialMedia,
-      formData.visualIdentity.infoCompleteAndUpdated,
-      formData.visualIdentity.contentCommunicatesClearly,
-    ];
-    const idAnswered = idQuestions.filter((q) => q !== '').length;
-    const idTotal = idQuestions.reduce((acc, q) => acc + (idMap[q] ?? 0), 0);
-    const idScore = idAnswered > 0 ? Math.round(idTotal / 4) : 0;
+  // CÁLCULO DE RESULTADO INTERNO DE VENTAS — USO DE LUMINEL
+  const salesDiagnosis = computed(() => {
+    const d = formData;
 
-    // 2. Sitio Web
-    let webScore = 0;
-    let webAnswered = 0;
-    if (formData.website.hasWebsite === 'no') {
-      webScore = 10; // Tiene noción pero no web
-      webAnswered = 1;
-    } else if (formData.website.hasWebsite === 'si') {
-      const subMap: Record<string, number> = { si: 100, revision: 50, no: 0, '': 0 };
-      const sub = [
-        formData.website.mobileFriendly,
-        formData.website.infoUpdated,
-        formData.website.facilitatesContact,
-      ];
-      const answeredSub = sub.filter((q) => q !== '').length;
-      const totalSub = sub.reduce((acc, q) => acc + (subMap[q] ?? 0), 0);
-      webAnswered = 1 + answeredSub;
-      webScore = answeredSub > 0 ? Math.round((totalSub + 100) / 4) : 25;
+    // 1. Necesidad prioritaria
+    let necesidadPrioritaria = 'Evaluación integral de presencia digital';
+    let servicioPrincipal = 'Diagnóstico y consultoría estratégica';
+
+    switch (d.businessGoal.priorityGoal) {
+      case 'marca_profesional':
+        necesidadPrioritaria = 'Construcción y profesionalización de identidad visual';
+        servicioPrincipal = d.brandIdentity.logoDefined === 'no_crear'
+          ? 'Paquete completo de Branding (Identidad de marca desde cero)'
+          : 'Refrescamiento de Identidad Visual y Uniformidad de Marca';
+        break;
+      case 'publicaciones_contenido':
+        necesidadPrioritaria = 'Diseño y estrategia de contenido constante en redes sociales';
+        servicioPrincipal = 'Paquete de Contenido para Redes Sociales';
+        break;
+      case 'pagina_web':
+        necesidadPrioritaria = d.website.hasWebsite === 'no'
+          ? 'Creación de Sitio Web profesional / Landing Page'
+          : 'Rediseño y optimización responsive de Sitio Web';
+        servicioPrincipal = d.website.hasWebsite === 'no'
+          ? 'Desarrollo de Sitio Web / Landing Page'
+          : 'Actualización y Optimización de Sitio Web';
+        break;
+      case 'mas_clientes_pauta':
+        necesidadPrioritaria = 'Atracción de prospectos calificados y aumento de ventas';
+        if (d.website.hasWebsite === 'si' && d.website.mobileFriendly === 'si') {
+          servicioPrincipal = 'Campaña Google Ads (Búsqueda) + Meta Ads';
+        } else {
+          servicioPrincipal = 'Campaña Meta Ads (Clientes potenciales a WhatsApp) y/o Landing Page';
+        }
+        break;
+      case 'orientacion':
+        necesidadPrioritaria = 'Asesoría y ruta estratégica para estructurar su presencia digital';
+        servicioPrincipal = 'Consultoría Estratégica Luminel + Paquete Inicial';
+        break;
     }
 
-    // 3. Publicidad Digital
-    let adsScore = 0;
-    let adsAnswered = 0;
-    if (formData.digitalAdvertising.doesOnlineAds === 'no') {
-      adsScore = 15;
-      adsAnswered = 1;
-    } else if (formData.digitalAdvertising.doesOnlineAds === 'si') {
-      const effMap: Record<string, number> = { si: 100, revision: 50, no: 20, '': 0 };
-      adsAnswered = formData.digitalAdvertising.isEffective ? 2 : 1;
-      adsScore = formData.digitalAdvertising.isEffective
-        ? Math.round((100 + (effMap[formData.digitalAdvertising.isEffective] ?? 0)) / 2)
-        : 50;
+    // 2. Recomendación de Branding
+    let brandingStatus = 'Sin evaluar';
+    let brandingOffer = 'No especificado';
+    if (d.brandIdentity.logoDefined === 'no_crear') {
+      brandingStatus = 'Urgente / Sin identidad';
+      brandingOffer = 'Paquete de Branding completo. Carece de logotipo e imagen definida.';
+    } else if (d.brandIdentity.logoDefined === 'logo_mejorar' || d.brandIdentity.visualConsistency === 'no_mejorar') {
+      brandingStatus = 'Requiere uniformidad';
+      brandingOffer = 'Ajuste de Identidad Visual y manual de estilo. Ya cuenta con logotipo, requiere uniformidad y profesionalismo.';
+    } else if (d.brandIdentity.visualConsistency === 'algunas') {
+      brandingStatus = 'Parcialmente consistente';
+      brandingOffer = 'Estandarización visual y plantillas gráficas.';
+    } else if (d.brandIdentity.logoDefined === 'si_definidos' && d.brandIdentity.visualConsistency === 'si') {
+      brandingStatus = 'Sólido y consistente';
+      brandingOffer = 'Cuenta con identidad definida. No requiere paquete de branding por ahora.';
     }
 
-    // Total general ponderado
-    const totalAnsweredQuestions = idAnswered + webAnswered + adsAnswered;
-    const maxExpectedQuestions = 4 + (formData.website.hasWebsite === 'si' ? 4 : 1) + (formData.digitalAdvertising.doesOnlineAds === 'si' ? 2 : 1);
-    const completionPercentage = Math.round((totalAnsweredQuestions / maxExpectedQuestions) * 100);
+    // 3. Recomendación de Diseño Web
+    let webStatus = 'Sin evaluar';
+    let webOffer = 'No especificado';
+    if (d.website.hasWebsite === 'no') {
+      webStatus = 'Sin sitio web';
+      webOffer = 'Desarrollo de nuevo Sitio Web o Landing Page profesional para presentar servicios y captar clientes desde Google.';
+    } else if (d.website.hasWebsite === 'si') {
+      const needsMobile = d.website.mobileFriendly === 'no' || d.website.mobileFriendly === 'revision';
+      const needsUpdate = d.website.alignedWithBrand === 'no' || d.website.alignedWithBrand === 'actualizar';
 
-    const overallScore = Math.round((idScore * 0.4) + (webScore * 0.35) + (adsScore * 0.25));
+      if (needsMobile && needsUpdate) {
+        webStatus = 'Desactualizada y no responsive';
+        webOffer = 'Rediseño Web Integral: Adaptación móvil responsive + alineación visual a la marca.';
+      } else if (needsMobile) {
+        webStatus = 'Problemas en celulares';
+        webOffer = 'Optimización móvil responsive y mejora de experiencia de usuario (UX).';
+      } else if (needsUpdate) {
+        webStatus = 'Desalineada de marca';
+        webOffer = 'Actualización visual de sitio web para reflejar la imagen actual de la marca.';
+      } else if (d.website.mobileFriendly === 'si' && d.website.alignedWithBrand === 'si') {
+        webStatus = 'Web funcional y alineada';
+        webOffer = 'Sitio web en buen estado. Listo para recibir tráfico de campañas publicitarias.';
+      }
+    }
 
-    let maturityLevel = 'Sin Evaluar';
-    let maturityColor = '#6c757d';
-    let maturityAdvice = 'Completa las preguntas para descubrir el índice digital de tu marca.';
+    // 4. Recomendación de Contenido Redes
+    let redesStatus = 'Sin evaluar';
+    let redesOffer = 'No especificado';
+    if (d.socialContent.postingFrequency === 'no_publico') {
+      redesStatus = 'Inactivo en redes';
+      redesOffer = 'Paquete de reactivación y diseño de contenido para redes sociales.';
+    } else if (d.socialContent.postingFrequency === 'de_vez_en_cuando' || d.socialContent.explainsServices === 'no_seguro' || d.socialContent.explainsServices === 'algunas_veces') {
+      redesStatus = 'Intermitente o poco claro';
+      redesOffer = 'Paquete de diseño y estrategia de contenido enfocado en explicar servicios y captar clientes.';
+    } else if (d.socialContent.postingFrequency === 'si_constante' && d.socialContent.explainsServices === 'si') {
+      redesStatus = 'Activo y consistente';
+      redesOffer = 'Mantiene buena constancia. Mantener o escalar con contenido en video/reels.';
+    }
 
-    if (totalAnsweredQuestions >= 3) {
-      if (overallScore < 45) {
-        maturityLevel = 'Nivel Emergente / Vulnerable';
-        maturityColor = '#f59e0b';
-        maturityAdvice = 'Tu negocio tiene un alto potencial de crecimiento desaprovechado. Con una estrategia de branding y sitio web optimizado duplicarás tu impacto.';
-      } else if (overallScore < 75) {
-        maturityLevel = 'Nivel En Crecimiento';
-        maturityColor = '#00B1BC';
-        maturityAdvice = 'Cuentas con bases valiosas, pero existen fugas en comunicación y conversión. Pulir tu diseño web y redes proyectará una imagen de alto nivel.';
+    // 5. Recomendación de Publicidad
+    let adsStatus = 'Sin evaluar';
+    let adsOffer = 'No especificado';
+    if (d.advertising.investsInAds === 'no') {
+      if (d.businessGoal.priorityGoal === 'mas_clientes_pauta') {
+        if (d.website.hasWebsite === 'si' && d.website.mobileFriendly === 'si') {
+          adsStatus = 'Listo para pauta Google & Meta';
+          adsOffer = 'Campaña en Google Ads (búsqueda intencionada) y Meta Ads.';
+        } else {
+          adsStatus = 'Oportunidad Meta Ads / WhatsApp';
+          adsOffer = 'Campaña en Meta Ads dirigida a mensajes directos de WhatsApp. Si requiere Google Ads, ofrecer landing page previa.';
+        }
       } else {
-        maturityLevel = 'Nivel Consolidado / Avanzado';
-        maturityColor = '#A8C738';
-        maturityAdvice = '¡Excelente presencia digital! Es momento de acelerar con campañas de pauta publicitaria ultra dirigidas y experiencias de usuario premium.';
+        adsStatus = 'Etapa previa a pauta';
+        adsOffer = 'Fortalecer bases (branding, contenido o web) antes de invertir en publicidad paga.';
+      }
+    } else if (d.advertising.investsInAds !== '') {
+      if (d.advertising.results === 'casi_no') {
+        adsStatus = 'Pauta ineficiente / Fuga de inversión';
+        adsOffer = 'Auditoría completa de campañas, optimización de segmentación, creativos y embudo de conversión.';
+      } else if (d.advertising.results === 'no_medir') {
+        adsStatus = 'Sin métricas de retorno';
+        adsOffer = 'Configuración de analítica y medición de conversiones (Pixel de Meta, eventos y seguimiento comercial).';
+      } else if (d.advertising.results === 'recibo_clientes') {
+        adsStatus = 'Campañas activas con retorno';
+        adsOffer = 'Estrategia de escalamiento de presupuesto y diversificación de canales de adquisición.';
       }
     }
 
     return {
-      visualIdentity: idScore,
-      website: webScore,
-      ads: adsScore,
-      overall: overallScore,
-      completion: Math.min(100, completionPercentage),
-      maturityLevel,
-      maturityColor,
-      maturityAdvice,
-      totalAnswered: totalAnsweredQuestions,
-      maxExpected: maxExpectedQuestions,
+      necesidadPrioritaria,
+      servicioPrincipal,
+      branding: { status: brandingStatus, offer: brandingOffer },
+      web: { status: webStatus, offer: webOffer },
+      redes: { status: redesStatus, offer: redesOffer },
+      ads: { status: adsStatus, offer: adsOffer },
     };
   });
 
-  // Generar mensaje estructurado de WhatsApp
-  const generateWhatsAppMessage = () => {
-    const d = formData;
-    const s = scores.value;
-
-    const text = `*DIAGNÓSTICO DIGITAL - LUMINEL* 🚀
-----------------------------------------
-*DATOS GENERALES*
-• *Negocio:* ${d.general.businessName || 'No especificado'}
-• *Giro:* ${d.general.industry || 'No especificado'}
-• *Ubicación:* ${d.general.location || 'No especificada'}
-• *WhatsApp:* ${d.general.contactInfo || 'No especificado'}
-• *Correo:* ${d.general.contactInfoDos || 'No especificado'}
-
-
-*EVALUACIÓN Y RESPUESTAS*
-1. *Identidad Visual:*
-   - Identidad definida: ${d.visualIdentity.hasDefinedIdentity || 'N/A'}
-   - Línea gráfica consistente: ${d.visualIdentity.consistentSocialMedia || 'N/A'}
-   - Información completa y actualizada: ${d.visualIdentity.infoCompleteAndUpdated || 'N/A'}
-   - Contenido comunica claramente: ${d.visualIdentity.contentCommunicatesClearly || 'N/A'}
-
-2. *Sitio Web:*
-   - ¿Cuenta con página web?: ${d.website.hasWebsite || 'N/A'}
-   ${
-     d.website.hasWebsite === 'si'
-       ? `  * Móviles: ${d.website.mobileFriendly || 'N/A'}
-  * Info actualizada: ${d.website.infoUpdated || 'N/A'}
-  * Facilita contacto: ${d.website.facilitatesContact || 'N/A'}`
-       : ''
-   }
-
-3. *Publicidad Digital:*
-   - ¿Realiza publicidad en línea?: ${d.digitalAdvertising.doesOnlineAds || 'N/A'}
-   ${
-     d.digitalAdvertising.doesOnlineAds === 'si'
-       ? `  * ¿Es efectiva?: ${d.digitalAdvertising.isEffective || 'N/A'}`
-       : ''
-   }
-
-*RESULTADO ESTIMADO:*
-*Índice Digital:* ${s.overall}/100
-*Diagnóstico:* ${s.maturityLevel}
-*Recomendación:* ${s.maturityAdvice}
-
-_Enviado desde el formulario interactivo de Luminel Agencia Creativa_`;
-
-    return encodeURIComponent(text);
-  };
-
-  const targetEmail = 'dalila191997@gmail.com';
-
-  const generateEmailContent = () => {
-    const d = formData;
-    const s = scores.value;
-
-    const subject = `Diagnóstico Digital - ${d.general.businessName || 'Nuevo Negocio'}`;
-    const body = `DIAGNÓSTICO DIGITAL - LUMINEL AGENCIA CREATIVA
---------------------------------------------------
-DATOS GENERALES:
-• Negocio: ${d.general.businessName || 'No especificado'}
-• Giro: ${d.general.industry || 'No especificado'}
-• Ubicación: ${d.general.location || 'No especificada'}
-• WhatsApp: ${d.general.contactInfo || 'No especificado'}
-• Correo del cliente: ${d.general.contactInfoDos || 'No especificado'}
-
-EVALUACIÓN Y RESPUESTAS:
-1. IDENTIDAD VISUAL:
-- Identidad definida: ${d.visualIdentity.hasDefinedIdentity || 'N/A'}
-- Línea gráfica en redes: ${d.visualIdentity.consistentSocialMedia || 'N/A'}
-- Información completa y actualizada: ${d.visualIdentity.infoCompleteAndUpdated || 'N/A'}
-- Contenido comunica claramente: ${d.visualIdentity.contentCommunicatesClearly || 'N/A'}
-
-2. SITIO WEB:
-- ¿Cuenta con página web?: ${d.website.hasWebsite || 'N/A'}
-${
-  d.website.hasWebsite === 'si'
-    ? `  * Móviles: ${d.website.mobileFriendly || 'N/A'}
-  * Info actualizada: ${d.website.infoUpdated || 'N/A'}
-  * Facilita contacto: ${d.website.facilitatesContact || 'N/A'}`
-    : ''
-}
-
-3. PUBLICIDAD DIGITAL:
-- ¿Realiza publicidad en línea?: ${d.digitalAdvertising.doesOnlineAds || 'N/A'}
-${
-  d.digitalAdvertising.doesOnlineAds === 'si'
-    ? `  * ¿Es efectiva?: ${d.digitalAdvertising.isEffective || 'N/A'}`
-    : ''
-}
-
-RESULTADO ESTIMADO:
-• Índice Digital: ${s.overall}/100
-• Diagnóstico: ${s.maturityLevel}
-• Recomendación: ${s.maturityAdvice}
-
---------------------------------------------------
-Enviado desde el formulario interactivo de Luminel Agencia Creativa`;
-
-    return { subject, body };
-  };
-
   const errors = reactive({
-    businessName: false,
+    contactName: false,
     contact: false,
   });
 
   const sendState = ref<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const validationMessage = ref('');
+  const targetEmail = 'dalila191997@gmail.com';
 
   const sendViaEmail = async () => {
     // Resetear errores previos
-    errors.businessName = false;
+    errors.contactName = false;
     errors.contact = false;
     validationMessage.value = '';
 
-    const hasBusinessName = !!formData.general.businessName?.trim();
-    const hasContact = !!formData.general.contactInfo?.trim() || !!formData.general.contactInfoDos?.trim();
+    const hasName = !!formData.general.contactName?.trim();
+    const hasContact = !!formData.general.phone?.trim() || !!formData.general.email?.trim();
 
-    if (!hasBusinessName || !hasContact) {
-      if (!hasBusinessName) errors.businessName = true;
+    if (!hasName || !hasContact) {
+      if (!hasName) errors.contactName = true;
       if (!hasContact) errors.contact = true;
 
       sendState.value = 'error';
-      validationMessage.value = 'Por favor completa el nombre del negocio y al menos un dato de contacto (WhatsApp o correo).';
+      validationMessage.value = 'Por favor completa el nombre del contacto y al menos un dato (WhatsApp/teléfono o correo).';
 
-      // Scroll suave hacia el primer campo faltante
-      const targetId = !hasBusinessName ? 'lux-name' : 'lux-contact';
+      const targetId = !hasName ? 'lux-name' : 'lux-phone';
       if (typeof document !== 'undefined') {
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
@@ -329,42 +332,59 @@ Enviado desde el formulario interactivo de Luminel Agencia Creativa`;
       let captchaToken = '';
       try {
         if (typeof window !== 'undefined' && (window as any).grecaptcha && typeof (window as any).grecaptcha.execute === 'function') {
-          captchaToken = await (window as any).grecaptcha.execute('', { action: 'submit_diagnostico' });
+          const siteKey = (window as any).RECAPTCHA_SITE_KEY || '6LdET_otAAAAACVSHxGop0N7GyW5LZreMVtWfVs_';
+          if (siteKey) {
+            captchaToken = await (window as any).grecaptcha.execute(siteKey, { action: 'submit_diagnostico' });
+          }
         }
       } catch (captchaErr) {
         console.warn('reCAPTCHA no inicializado aún:', captchaErr);
       }
 
-      // 2. Construir FormData con todos los campos
+      // 2. Construir FormData con todos los campos nuevos
+      const d = formData;
+      const diag = salesDiagnosis.value;
       const fd = new FormData();
-      fd.append('nombre_negocio', formData.general.businessName);
-      fd.append('giro', formData.general.industry || 'No especificado');
-      fd.append('ubicacion', formData.general.location || 'No especificada');
-      fd.append('whatsapp', formData.general.contactInfo || 'No especificado');
-      fd.append('correo', formData.general.contactInfoDos || 'No especificado');
 
-      fd.append('identidad_definida', formData.visualIdentity.hasDefinedIdentity || 'N/A');
-      fd.append('redes_consistentes', formData.visualIdentity.consistentSocialMedia || 'N/A');
-      fd.append('info_completa', formData.visualIdentity.infoCompleteAndUpdated || 'N/A');
-      fd.append('comunica_claramente', formData.visualIdentity.contentCommunicatesClearly || 'N/A');
+      // Datos Generales
+      fd.append('nombre_contacto', d.general.contactName);
+      fd.append('telefono', d.general.phone || 'No especificado');
+      fd.append('correo', d.general.email || 'No especificado');
 
-      fd.append('cuenta_con_web', formData.website.hasWebsite || 'N/A');
-      fd.append('web_moviles', formData.website.mobileFriendly || 'N/A');
-      fd.append('web_actualizada', formData.website.infoUpdated || 'N/A');
-      fd.append('web_contacto', formData.website.facilitatesContact || 'N/A');
+      // 1. Identidad de marca
+      fd.append('logo_definido', LABELS.logoDefined[d.brandIdentity.logoDefined as keyof typeof LABELS.logoDefined] || 'No especificado');
+      fd.append('estilo_visual', LABELS.visualConsistency[d.brandIdentity.visualConsistency as keyof typeof LABELS.visualConsistency] || 'No especificado');
 
-      fd.append('hace_publicidad', formData.digitalAdvertising.doesOnlineAds || 'N/A');
-      fd.append('publicidad_efectiva', formData.digitalAdvertising.isEffective || 'N/A');
+      // 2. Contenido para redes sociales
+      fd.append('publica_constante', LABELS.postingFrequency[d.socialContent.postingFrequency as keyof typeof LABELS.postingFrequency] || 'No especificado');
+      fd.append('explica_servicios', LABELS.explainsServices[d.socialContent.explainsServices as keyof typeof LABELS.explainsServices] || 'No especificado');
 
-      fd.append('indice_digital', scores.value.overall.toString());
-      fd.append('nivel_madurez', scores.value.maturityLevel);
-      fd.append('recomendacion', scores.value.maturityAdvice);
+      // 3. Página web
+      fd.append('cuenta_con_web', LABELS.hasWebsite[d.website.hasWebsite as keyof typeof LABELS.hasWebsite] || 'No especificado');
+      fd.append('web_celulares', d.website.hasWebsite === 'si' ? (LABELS.mobileFriendly[d.website.mobileFriendly as keyof typeof LABELS.mobileFriendly] || 'No especificado') : 'N/A');
+      fd.append('web_alineada', d.website.hasWebsite === 'si' ? (LABELS.alignedWithBrand[d.website.alignedWithBrand as keyof typeof LABELS.alignedWithBrand] || 'No especificado') : 'N/A');
+
+      // 4. Publicidad digital
+      fd.append('invierte_publicidad', LABELS.investsInAds[d.advertising.investsInAds as keyof typeof LABELS.investsInAds] || 'No especificado');
+      fd.append('resultados_publicidad', d.advertising.investsInAds !== 'no' && d.advertising.investsInAds !== '' ? (LABELS.results[d.advertising.results as keyof typeof LABELS.results] || 'No especificado') : 'N/A');
+
+      // 5. Objetivo del negocio
+      fd.append('objetivo_prioritario', LABELS.priorityGoal[d.businessGoal.priorityGoal as keyof typeof LABELS.priorityGoal] || 'No especificado');
+      fd.append('detalle_especifico', d.businessGoal.specificDetail?.trim() || 'Sin comentarios adicionales');
+
+      // Diagnóstico Interno de Ventas Luminel
+      fd.append('necesidad_prioritaria', diag.necesidadPrioritaria);
+      fd.append('servicio_principal', diag.servicioPrincipal);
+      fd.append('diag_branding', `${diag.branding.status} — ${diag.branding.offer}`);
+      fd.append('diag_web', `${diag.web.status} — ${diag.web.offer}`);
+      fd.append('diag_redes', `${diag.redes.status} — ${diag.redes.offer}`);
+      fd.append('diag_ads', `${diag.ads.status} — ${diag.ads.offer}`);
 
       if (captchaToken) {
         fd.append('g-recaptcha-response', captchaToken);
       }
 
-      // 3. Enviar al backend PHP
+      // 3. Enviar a enviar.php
       const respuesta = await fetch('/enviar.php', {
         method: 'POST',
         body: fd,
@@ -376,11 +396,11 @@ Enviado desde el formulario interactivo de Luminel Agencia Creativa`;
       if (contentType.includes('application/json')) {
         resultado = await respuesta.json();
       } else {
-        // Fallback para pruebas locales en Vite (donde Vite no ejecuta PHP pero el archivo existe)
+        // Fallback para pruebas locales en Vite
         if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
           resultado = {
             success: true,
-            message: '¡Diagnóstico enviado con éxito! (En servidor de producción se enviará automáticamente a dalila191997@gmail.com vía PHP).'
+            message: '¡Diagnóstico enviado con éxito! (En servidor de producción se despachará automáticamente a dalila191997@gmail.com vía PHP).',
           };
         } else {
           throw new Error('Respuesta del servidor no válida');
@@ -405,7 +425,6 @@ Enviado desde el formulario interactivo de Luminel Agencia Creativa`;
       }
     } catch (error) {
       console.error('Error enviando formulario:', error);
-      // Si estamos en localhost, simulamos éxito para que el usuario pueda probar el flujo visual
       if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
         sendState.value = 'sent';
         validationMessage.value = '¡Diagnóstico procesado exitosamente! (En el hosting cPanel se enviará automáticamente a dalila191997@gmail.com vía PHP).';
@@ -421,52 +440,15 @@ Enviado desde el formulario interactivo de Luminel Agencia Creativa`;
     }
   };
 
-  const sendViaWhatsApp = () => {
-    // Mantenemos soporte a WhatsApp si se requiere
-    errors.businessName = false;
-    errors.contact = false;
-    validationMessage.value = '';
-
-    const hasBusinessName = !!formData.general.businessName?.trim();
-    const hasContact = !!formData.general.contactInfo?.trim() || !!formData.general.contactInfoDos?.trim();
-
-    if (!hasBusinessName || !hasContact) {
-      if (!hasBusinessName) errors.businessName = true;
-      if (!hasContact) errors.contact = true;
-
-      sendState.value = 'error';
-      validationMessage.value = 'Por favor completa el nombre del negocio y al menos un dato de contacto.';
-      return false;
-    }
-
-    sendState.value = 'sending';
-    const encoded = generateWhatsAppMessage();
-    const phone = '5218334610202';
-    window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
-    sendState.value = 'sent';
-
-    setTimeout(() => {
-      if (sendState.value === 'sent') {
-        sendState.value = 'idle';
-      }
-    }, 7000);
-
-    return true;
-  };
-
   return {
     formData,
-    selectedStyle,
-    scores,
+    resetForm,
+    fillSampleData,
+    salesDiagnosis,
     errors,
     sendState,
     validationMessage,
     targetEmail,
-    resetForm,
-    fillSampleData,
-    generateWhatsAppMessage,
-    generateEmailContent,
     sendViaEmail,
-    sendViaWhatsApp,
   };
 };

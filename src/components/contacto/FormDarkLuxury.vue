@@ -4,7 +4,7 @@ import type { DiagnosticFormData } from '@/composables/useDiagnosticForm';
 interface Props {
   formData: DiagnosticFormData;
   errors?: {
-    businessName: boolean;
+    contactName: boolean;
     contact: boolean;
   };
 }
@@ -17,93 +17,73 @@ defineProps<Props>();
     <div class="row justify-content-center">
       <!-- COLUMNA PRINCIPAL DE FORMULARIO -->
       <div class="col-12 col-xl-12">
-        <!-- BLOQUE 1: DATOS GENERALES -->
+        
+        <!-- ==============================================
+             BLOQUE: DATOS GENERALES
+             ============================================== -->
         <div class="luxury-card mb-4 p-4 p-md-5 rounded-4">
           <div class="d-flex align-items-center justify-content-between mb-4 border-bottom-hairline pb-3">
             <div>
-              <!-- <span class="luxury-overline">Registro Corporativo</span> -->
+              <span class="luxury-overline text-cyan">Paso 01</span>
               <h3 class="luxury-card-title m-0">DATOS GENERALES</h3>
             </div>
-            <!-- <span class="luxury-mono-badge">01 // BASIC</span> -->
+            <span class="luxury-mono-badge"><i class="bi bi-person-badge me-1"></i> Contacto</span>
           </div>
 
           <div class="row g-4">
+            <!-- Nombre del contacto -->
             <div class="col-12 col-md-6">
               <div class="luxury-field">
                 <label for="lux-name" class="luxury-label">
-                  Nombre del negocio <span class="text-lime">*</span>
+                  Nombre del contacto <span class="text-lime">*</span>
                 </label>
                 <input
                   id="lux-name"
-                  v-model="formData.general.businessName"
+                  v-model="formData.general.contactName"
                   type="text"
                   class="luxury-input"
-                  :class="{ 'input-error': errors?.businessName }"
-                  placeholder="Ej. Luminel Studio"
-                  @input="errors && (errors.businessName = false)"
+                  :class="{ 'input-error': errors?.contactName }"
+                  placeholder="Tu nombre completo o representante"
+                  @input="errors && (errors.contactName = false)"
                 />
-                <span v-if="errors?.businessName" class="field-error-text">
-                  <i class="bi bi-exclamation-circle-fill me-1"></i> Por favor ingresa el nombre de tu negocio.
+                <span v-if="errors?.contactName" class="field-error-text">
+                  <i class="bi bi-exclamation-circle-fill me-1"></i> Por favor ingresa tu nombre.
                 </span>
               </div>
             </div>
 
+            <!-- WhatsApp / teléfono -->
             <div class="col-12 col-md-6">
               <div class="luxury-field">
-                <label for="lux-industry" class="luxury-label">Giro comercial</label>
-                <input
-                  id="lux-industry"
-                  v-model="formData.general.industry"
-                  type="text"
-                  class="luxury-input"
-                  placeholder="Sector o especialidad"
-                />
-              </div>
-            </div>
-
-            <div class="col-12 col-md-6">
-              <div class="luxury-field">
-                <label for="lux-location" class="luxury-label">Ubicación</label>
-                <input
-                  id="lux-location"
-                  v-model="formData.general.location"
-                  type="text"
-                  class="luxury-input"
-                  placeholder="Ciudad, Región o Matriz"
-                />
-              </div>
-            </div>
-
-            <div class="col-12 col-md-6">
-              <div class="luxury-field">
-                <label for="lux-contact" class="luxury-label">
-                  WhatsApp <span class="text-lime">*</span>
+                <label for="lux-phone" class="luxury-label">
+                  WhatsApp / teléfono <span class="text-lime">*</span>
                 </label>
                 <input
-                  id="lux-contact"
-                  v-model="formData.general.contactInfo"
-                  type="text"
+                  id="lux-phone"
+                  v-model="formData.general.phone"
+                  type="tel"
                   class="luxury-input"
                   :class="{ 'input-error': errors?.contact }"
-                  placeholder="+52 1 234 5678"
+                  placeholder="Ej. +52 55 1234 5678"
                   @input="errors && (errors.contact = false)"
                 />
                 <span v-if="errors?.contact" class="field-error-text">
-                  <i class="bi bi-exclamation-circle-fill me-1"></i> Ingresa al menos un contacto (WhatsApp o correo).
+                  <i class="bi bi-exclamation-circle-fill me-1"></i> Ingresa al menos un medio (WhatsApp o correo).
                 </span>
               </div>
             </div>
 
-            <div class="col-12 col-md-6">
+            <!-- Correo electrónico -->
+            <div class="col-12">
               <div class="luxury-field">
-                <label for="lux-email" class="luxury-label">Correo Electrónico</label>
+                <label for="lux-email" class="luxury-label">Correo electrónico</label>
                 <input
                   id="lux-email"
-                  v-model="formData.general.contactInfoDos"
-                  type="text"
+                  v-model="formData.general.email"
+                  type="email"
                   class="luxury-input"
                   :class="{ 'input-error': errors?.contact }"
-                  placeholder="ejemplo@gmail.com"
+                  placeholder="nombre@empresa.com"
                   @input="errors && (errors.contact = false)"
                 />
               </div>
@@ -111,663 +91,775 @@ defineProps<Props>();
           </div>
         </div>
 
-        <!-- BLOQUE 2: EVALUACIÓN 1 - IDENTIDAD VISUAL -->
+        <!-- ==============================================
+             BLOQUE 1: IDENTIDAD DE MARCA
+             ============================================== -->
         <div class="luxury-card mb-4 p-4 p-md-5 rounded-4">
           <div class="d-flex align-items-center justify-content-between mb-4 border-bottom-hairline pb-3">
             <div>
-              <span class="luxury-overline text-lime">Pilar Estratégico</span>
-              <h3 class="luxury-card-title m-0">1. IDENTIDAD VISUAL</h3>
+              <span class="luxury-overline text-lime">Pilar Estratégico 01</span>
+              <h3 class="luxury-card-title m-0">1. IDENTIDAD DE MARCA</h3>
             </div>
-            <!-- <span class="luxury-mono-badge">02 // BRAND</span> -->
+            <span class="luxury-mono-badge"><i class="bi bi-palette me-1"></i> Branding</span>
           </div>
 
           <div class="luxury-questions-stack">
-            <!-- 1.1 -->
-            <div class="luxury-question-item py-3">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <div class="q-content">
-                  <span class="q-index">1.1</span>
-                  <span class="q-text text-white">¿Tu marca cuenta con una identidad visual definida?</span>
-                </div>
-                <div class="luxury-segmented-control">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.hasDefinedIdentity === 'si' }"
-                    @click="formData.visualIdentity.hasDefinedIdentity = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.hasDefinedIdentity === 'parcialmente' }"
-                    @click="formData.visualIdentity.hasDefinedIdentity = 'parcialmente'"
-                  >
-                    Parcialmente
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.visualIdentity.hasDefinedIdentity === 'no' }"
-                    @click="formData.visualIdentity.hasDefinedIdentity = 'no'"
-                  >
-                    No
-                  </button>
-                </div>
+            <!-- Pregunta 1 -->
+            <div class="luxury-question-block py-3">
+              <div class="q-header mb-3">
+                <span class="q-number">1.</span>
+                <span class="q-title text-white">¿Tu negocio cuenta con un logotipo y una imagen de marca definidos?</span>
+              </div>
+              <div class="luxury-options-grid">
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.brandIdentity.logoDefined === 'si_definidos' }"
+                  @click="formData.brandIdentity.logoDefined = 'si_definidos'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí, ambos están definidos</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.brandIdentity.logoDefined === 'logo_mejorar' }"
+                  @click="formData.brandIdentity.logoDefined = 'logo_mejorar'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Tengo logotipo, pero necesito mejorar mi imagen</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.brandIdentity.logoDefined === 'no_crear' }"
+                  @click="formData.brandIdentity.logoDefined = 'no_crear'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">No, necesito crear mi identidad de marca</span>
+                </button>
               </div>
             </div>
 
-            <!-- 1.2 -->
-            <div class="luxury-question-item py-3">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <div class="q-content">
-                  <span class="q-index">1.2</span>
-                  <span class="q-text text-white">¿Tus redes cuentan con una línea gráfica consistente?</span>
-                </div>
-                <div class="luxury-segmented-control">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.consistentSocialMedia === 'si' }"
-                    @click="formData.visualIdentity.consistentSocialMedia = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.consistentSocialMedia === 'parcialmente' }"
-                    @click="formData.visualIdentity.consistentSocialMedia = 'parcialmente'"
-                  >
-                    Parcialmente
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.visualIdentity.consistentSocialMedia === 'no' }"
-                    @click="formData.visualIdentity.consistentSocialMedia = 'no'"
-                  >
-                    No
-                  </button>
-                </div>
+            <!-- Pregunta 2 -->
+            <div class="luxury-question-block py-3 border-top-hairline">
+              <div class="q-header mb-3">
+                <span class="q-number">2.</span>
+                <span class="q-title text-white">¿Tus publicaciones mantienen un estilo visual consistente?</span>
               </div>
-            </div>
+              <div class="luxury-options-grid">
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.brandIdentity.visualConsistency === 'si' }"
+                  @click="formData.brandIdentity.visualConsistency = 'si'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí</span>
+                </button>
 
-            <!-- 1.3 -->
-            <div class="luxury-question-item py-3">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <div class="q-content">
-                  <span class="q-index">1.3</span>
-                  <span class="q-text text-white">¿La información de tu negocio está completa y actualizada?</span>
-                </div>
-                <div class="luxury-segmented-control">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.infoCompleteAndUpdated === 'si' }"
-                    @click="formData.visualIdentity.infoCompleteAndUpdated = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.infoCompleteAndUpdated === 'parcialmente' }"
-                    @click="formData.visualIdentity.infoCompleteAndUpdated = 'parcialmente'"
-                  >
-                    Parcialmente
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.visualIdentity.infoCompleteAndUpdated === 'no' }"
-                    @click="formData.visualIdentity.infoCompleteAndUpdated = 'no'"
-                  >
-                    No
-                  </button>
-                </div>
-              </div>
-            </div>
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.brandIdentity.visualConsistency === 'algunas' }"
+                  @click="formData.brandIdentity.visualConsistency = 'algunas'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Algunas sí y otras no</span>
+                </button>
 
-            <!-- 1.4 -->
-            <div class="luxury-question-item py-3">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <div class="q-content">
-                  <span class="q-index">1.4</span>
-                  <span class="q-text text-white">¿Tu contenido comunica claramente lo que ofrece tu negocio?</span>
-                </div>
-                <div class="luxury-segmented-control">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.contentCommunicatesClearly === 'si' }"
-                    @click="formData.visualIdentity.contentCommunicatesClearly = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.visualIdentity.contentCommunicatesClearly === 'parcialmente' }"
-                    @click="formData.visualIdentity.contentCommunicatesClearly = 'parcialmente'"
-                  >
-                    Parcialmente
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.visualIdentity.contentCommunicatesClearly === 'no' }"
-                    @click="formData.visualIdentity.contentCommunicatesClearly = 'no'"
-                  >
-                    No
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.brandIdentity.visualConsistency === 'no_mejorar' }"
+                  @click="formData.brandIdentity.visualConsistency = 'no_mejorar'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">No, necesito mejorar su apariencia</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- BLOQUE 3: EVALUACIÓN 2 - SITIO WEB -->
+        <!-- ==============================================
+             BLOQUE 2: CONTENIDO PARA REDES SOCIALES
+             ============================================== -->
         <div class="luxury-card mb-4 p-4 p-md-5 rounded-4">
           <div class="d-flex align-items-center justify-content-between mb-4 border-bottom-hairline pb-3">
             <div>
-              <span class="luxury-overline text-cyan">Plataforma Digital</span>
-              <h3 class="luxury-card-title m-0">2. SITIO WEB</h3>
+              <span class="luxury-overline text-cyan">Pilar Estratégico 02</span>
+              <h3 class="luxury-card-title m-0">2. CONTENIDO PARA REDES SOCIALES</h3>
             </div>
-            <!-- <span class="luxury-mono-badge">03 // WEB</span> -->
+            <span class="luxury-mono-badge"><i class="bi bi-instagram me-1"></i> Social Media</span>
           </div>
 
-          <!-- Pregunta base -->
-          <div class="luxury-question-item py-3">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-              <div class="q-content">
-                <span class="q-index">2.0</span>
-                <span class="q-text text-white fs-6">¿Cuenta con página web?</span>
+          <div class="luxury-questions-stack">
+            <!-- Pregunta 3 -->
+            <div class="luxury-question-block py-3">
+              <div class="q-header mb-3">
+                <span class="q-number">3.</span>
+                <span class="q-title text-white">¿Publicas contenido de manera constante en tus redes sociales?</span>
               </div>
-              <div class="luxury-segmented-control">
+              <div class="luxury-options-grid">
                 <button
                   type="button"
-                  class="seg-btn"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.socialContent.postingFrequency === 'si_constante' }"
+                  @click="formData.socialContent.postingFrequency = 'si_constante'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí, de manera constante</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.socialContent.postingFrequency === 'de_vez_en_cuando' }"
+                  @click="formData.socialContent.postingFrequency = 'de_vez_en_cuando'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">De vez en cuando</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.socialContent.postingFrequency === 'no_publico' }"
+                  @click="formData.socialContent.postingFrequency = 'no_publico'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Actualmente no publico</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="luxury-question-block py-3 border-top-hairline">
+              <div class="q-header mb-3">
+                <span class="q-number">4.</span>
+                <span class="q-title text-white">¿Tus publicaciones reflejan o ayudan a explicar tus servicios y atraer clientes?</span>
+              </div>
+              <div class="luxury-options-grid">
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.socialContent.explainsServices === 'si' }"
+                  @click="formData.socialContent.explainsServices = 'si'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.socialContent.explainsServices === 'algunas_veces' }"
+                  @click="formData.socialContent.explainsServices = 'algunas_veces'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Algunas veces</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.socialContent.explainsServices === 'no_seguro' }"
+                  @click="formData.socialContent.explainsServices = 'no_seguro'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">No estoy seguro(a) / necesito mejorar mi contenido</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             BLOQUE 3: PÁGINA WEB
+             ============================================== -->
+        <div class="luxury-card mb-4 p-4 p-md-5 rounded-4">
+          <div class="d-flex align-items-center justify-content-between mb-4 border-bottom-hairline pb-3">
+            <div>
+              <span class="luxury-overline text-lime">Pilar Estratégico 03</span>
+              <h3 class="luxury-card-title m-0">3. PÁGINA WEB</h3>
+            </div>
+            <span class="luxury-mono-badge"><i class="bi bi-globe2 me-1"></i> Website</span>
+          </div>
+
+          <div class="luxury-questions-stack">
+            <!-- Pregunta 5 (Base) -->
+            <div class="luxury-question-block py-3">
+              <div class="q-header mb-3">
+                <span class="q-number">5.</span>
+                <span class="q-title text-white">¿Tu negocio cuenta con página web?</span>
+              </div>
+              <div class="d-flex gap-3">
+                <button
+                  type="button"
+                  class="luxury-option-pill flex-fill"
                   :class="{ active: formData.website.hasWebsite === 'si' }"
                   @click="formData.website.hasWebsite = 'si'"
                 >
-                  Sí
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text fw-semibold">Sí</span>
                 </button>
+
                 <button
                   type="button"
-                  class="seg-btn seg-btn-no"
+                  class="luxury-option-pill flex-fill"
                   :class="{ active: formData.website.hasWebsite === 'no' }"
                   @click="formData.website.hasWebsite = 'no'"
                 >
-                  No
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text fw-semibold">No</span>
                 </button>
               </div>
             </div>
-          </div>
 
-          <!-- Sub-preguntas condicionadas -->
-          <div v-if="formData.website.hasWebsite === 'si'" class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3">
-            <div class="luxury-sub-header mb-3 pb-2 border-bottom-hairline">
-              <span class="text-lime small fw-bold text-uppercase">
-                <i class="bi bi-arrow-return-right me-1"></i> En caso afirmativo:
-              </span>
-            </div>
+            <!-- Condicionales si tiene web -->
+            <transition name="fade-slide">
+              <div v-if="formData.website.hasWebsite === 'si'" class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3 border-top-hairline">
+                <div class="luxury-sub-header mb-3 pb-2 border-bottom-hairline">
+                  <span class="text-lime small fw-bold text-uppercase">
+                    <i class="bi bi-arrow-return-right me-1"></i> Si respondiste que sí:
+                  </span>
+                </div>
 
-            <!-- 2.1 -->
-            <div class="luxury-question-item py-2">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <span class="q-text text-white-50 small">¿La página funciona correctamente en dispositivos móviles?</span>
-                <div class="luxury-segmented-control seg-sm">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.website.mobileFriendly === 'si' }"
-                    @click="formData.website.mobileFriendly = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-rev"
-                    :class="{ active: formData.website.mobileFriendly === 'revision' }"
-                    @click="formData.website.mobileFriendly = 'revision'"
-                  >
-                    Req. revisión
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.website.mobileFriendly === 'no' }"
-                    @click="formData.website.mobileFriendly = 'no'"
-                  >
-                    No
-                  </button>
+                <!-- Pregunta 6 -->
+                <div class="luxury-question-block py-3">
+                  <div class="q-header mb-3">
+                    <span class="q-number">6.</span>
+                    <span class="q-title text-white">¿Tu página se visualiza correctamente en celulares?</span>
+                  </div>
+                  <div class="luxury-options-grid">
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.website.mobileFriendly === 'si' }"
+                      @click="formData.website.mobileFriendly = 'si'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Sí</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.website.mobileFriendly === 'no' }"
+                      @click="formData.website.mobileFriendly = 'no'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">No</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.website.mobileFriendly === 'revision' }"
+                      @click="formData.website.mobileFriendly = 'revision'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Necesita revisión</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="luxury-question-block py-3 border-top-hairline">
+                  <div class="q-header mb-3">
+                    <span class="q-number">7.</span>
+                    <span class="q-title text-white">¿La página que tienes actualmente, está alineada a tu marca?</span>
+                  </div>
+                  <div class="luxury-options-grid">
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.website.alignedWithBrand === 'si' }"
+                      @click="formData.website.alignedWithBrand = 'si'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Sí</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.website.alignedWithBrand === 'no' }"
+                      @click="formData.website.alignedWithBrand = 'no'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">No</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.website.alignedWithBrand === 'actualizar' }"
+                      @click="formData.website.alignedWithBrand = 'actualizar'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Solo requiere actualizarse</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <!-- 2.2 -->
-            <div class="luxury-question-item py-2">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <span class="q-text text-white-50 small">¿La información está actualizada?</span>
-                <div class="luxury-segmented-control seg-sm">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.website.infoUpdated === 'si' }"
-                    @click="formData.website.infoUpdated = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.website.infoUpdated === 'no' }"
-                    @click="formData.website.infoUpdated = 'no'"
-                  >
-                    No
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2.3 -->
-            <div class="luxury-question-item py-2">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <span class="q-text text-white-50 small">¿Facilita el contacto por WhatsApp, formulario, teléfono u otro medio?</span>
-                <div class="luxury-segmented-control seg-sm">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.website.facilitatesContact === 'si' }"
-                    @click="formData.website.facilitatesContact = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.website.facilitatesContact === 'no' }"
-                    @click="formData.website.facilitatesContact = 'no'"
-                  >
-                    No
-                  </button>
-                </div>
-              </div>
-            </div>
+            </transition>
           </div>
         </div>
 
-        <!-- BLOQUE 4: EVALUACIÓN 3 - PUBLICIDAD DIGITAL -->
-        <div class="luxury-card p-4 p-md-5 rounded-4">
+        <!-- ==============================================
+             BLOQUE 4: PUBLICIDAD DIGITAL
+             ============================================== -->
+        <div class="luxury-card mb-4 p-4 p-md-5 rounded-4">
           <div class="d-flex align-items-center justify-content-between mb-4 border-bottom-hairline pb-3">
             <div>
-              <span class="luxury-overline text-lime">Adquisición & Pauta</span>
-              <h3 class="luxury-card-title m-0">3. PUBLICIDAD DIGITAL</h3>
+              <span class="luxury-overline text-cyan">Pilar Estratégico 04</span>
+              <h3 class="luxury-card-title m-0">4. PUBLICIDAD DIGITAL</h3>
             </div>
-            <!-- <span class="luxury-mono-badge">04 // ADS</span> -->
+            <span class="luxury-mono-badge"><i class="bi bi-megaphone me-1"></i> Ads</span>
           </div>
 
-          <!-- Pregunta base -->
-          <div class="luxury-question-item py-3">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-              <div class="q-content">
-                <span class="q-index">3.0</span>
-                <span class="q-text text-white fs-6">¿Actualmente realiza publicidad en línea?</span>
+          <div class="luxury-questions-stack">
+            <!-- Pregunta 8 (Base) -->
+            <div class="luxury-question-block py-3">
+              <div class="q-header mb-3">
+                <span class="q-number">8.</span>
+                <span class="q-title text-white">¿Actualmente inviertes en publicidad para promocionar tu negocio?</span>
               </div>
-              <div class="luxury-segmented-control">
+              <div class="luxury-options-grid">
                 <button
                   type="button"
-                  class="seg-btn"
-                  :class="{ active: formData.digitalAdvertising.doesOnlineAds === 'si' }"
-                  @click="formData.digitalAdvertising.doesOnlineAds = 'si'"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.advertising.investsInAds === 'no' }"
+                  @click="formData.advertising.investsInAds = 'no'"
                 >
-                  Sí
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">No, todavía no</span>
                 </button>
+
                 <button
                   type="button"
-                  class="seg-btn seg-btn-no"
-                  :class="{ active: formData.digitalAdvertising.doesOnlineAds === 'no' }"
-                  @click="formData.digitalAdvertising.doesOnlineAds = 'no'"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.advertising.investsInAds === 'meta' }"
+                  @click="formData.advertising.investsInAds = 'meta'"
                 >
-                  No
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí, en Facebook o Instagram</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.advertising.investsInAds === 'google' }"
+                  @click="formData.advertising.investsInAds = 'google'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí, en Google</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.advertising.investsInAds === 'ambas' }"
+                  @click="formData.advertising.investsInAds = 'ambas'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Sí, en ambas plataformas</span>
                 </button>
               </div>
             </div>
-          </div>
 
-          <!-- Sub-pregunta publicidad -->
-          <div v-if="formData.digitalAdvertising.doesOnlineAds === 'si'" class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3">
-            <div class="luxury-sub-header mb-3 pb-2 border-bottom-hairline">
-              <span class="text-cyan small fw-bold text-uppercase">
-                <i class="bi bi-arrow-return-right me-1"></i> En caso afirmativo:
-              </span>
-            </div>
-
-            <div class="luxury-question-item py-2">
-              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
-                <span class="q-text text-white-50 small">¿Considera que le es efectiva?</span>
-                <div class="luxury-segmented-control seg-sm">
-                  <button
-                    type="button"
-                    class="seg-btn"
-                    :class="{ active: formData.digitalAdvertising.isEffective === 'si' }"
-                    @click="formData.digitalAdvertising.isEffective = 'si'"
-                  >
-                    Sí
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-rev"
-                    :class="{ active: formData.digitalAdvertising.isEffective === 'revision' }"
-                    @click="formData.digitalAdvertising.isEffective = 'revision'"
-                  >
-                    Req. revisión
-                  </button>
-                  <button
-                    type="button"
-                    class="seg-btn seg-btn-no"
-                    :class="{ active: formData.digitalAdvertising.isEffective === 'no' }"
-                    @click="formData.digitalAdvertising.isEffective = 'no'"
-                  >
-                    No
-                  </button>
+            <!-- Condicional si ya invierte -->
+            <transition name="fade-slide">
+              <div
+                v-if="formData.advertising.investsInAds !== 'no' && formData.advertising.investsInAds !== ''"
+                class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3 border-top-hairline"
+              >
+                <div class="luxury-sub-header mb-3 pb-2 border-bottom-hairline">
+                  <span class="text-cyan small fw-bold text-uppercase">
+                    <i class="bi bi-arrow-return-right me-1"></i> Si ya inviertes en publicidad:
+                  </span>
                 </div>
+
+                <!-- Pregunta 9 -->
+                <div class="luxury-question-block py-2">
+                  <div class="q-header mb-3">
+                    <span class="q-number">9.</span>
+                    <span class="q-title text-white">¿Qué resultados estás obteniendo?</span>
+                  </div>
+                  <div class="luxury-options-grid">
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.advertising.results === 'recibo_clientes' }"
+                      @click="formData.advertising.results = 'recibo_clientes'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Recibo consultas o clientes</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.advertising.results === 'casi_no' }"
+                      @click="formData.advertising.results = 'casi_no'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Invierto, pero casi no recibo resultados</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="luxury-option-pill"
+                      :class="{ active: formData.advertising.results === 'no_medir' }"
+                      @click="formData.advertising.results = 'no_medir'"
+                    >
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">No sé cómo medir los resultados</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </transition>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             BLOQUE 5: OBJETIVO DEL NEGOCIO
+             ============================================== -->
+        <div class="luxury-card mb-4 p-4 p-md-5 rounded-4">
+          <div class="d-flex align-items-center justify-content-between mb-4 border-bottom-hairline pb-3">
+            <div>
+              <span class="luxury-overline text-lime">Pilar Estratégico 05</span>
+              <h3 class="luxury-card-title m-0">5. OBJETIVO DEL NEGOCIO</h3>
+            </div>
+            <span class="luxury-mono-badge"><i class="bi bi-bullseye me-1"></i> Meta Principal</span>
+          </div>
+
+          <div class="luxury-questions-stack">
+            <!-- Pregunta 10 -->
+            <div class="luxury-question-block py-3">
+              <div class="q-header mb-3">
+                <span class="q-number">10.</span>
+                <span class="q-title text-white">¿Qué te gustaría mejorar primero?</span>
+              </div>
+              <div class="luxury-options-grid">
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.businessGoal.priorityGoal === 'marca_profesional' }"
+                  @click="formData.businessGoal.priorityGoal = 'marca_profesional'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Tener una imagen de marca más profesional</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.businessGoal.priorityGoal === 'publicaciones_contenido' }"
+                  @click="formData.businessGoal.priorityGoal = 'publicaciones_contenido'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Mejorar mis publicaciones y contenido</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.businessGoal.priorityGoal === 'pagina_web' }"
+                  @click="formData.businessGoal.priorityGoal = 'pagina_web'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Tener una página web o mejorar la que ya tengo</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.businessGoal.priorityGoal === 'mas_clientes_pauta' }"
+                  @click="formData.businessGoal.priorityGoal = 'mas_clientes_pauta'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">Conseguir más clientes mediante publicidad</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="luxury-option-pill"
+                  :class="{ active: formData.businessGoal.priorityGoal === 'orientacion' }"
+                  @click="formData.businessGoal.priorityGoal = 'orientacion'"
+                >
+                  <span class="pill-check"><i class="bi bi-check2"></i></span>
+                  <span class="pill-text">No estoy seguro(a); necesito orientación</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Pregunta 11 (Respuesta abierta) -->
+            <div class="luxury-question-block py-3 border-top-hairline">
+              <div class="q-header mb-3">
+                <span class="q-number">11.</span>
+                <span class="q-title text-white">¿Hay algo específico que te gustaría mejorar o resolver?</span>
+              </div>
+              <div class="luxury-field">
+                <textarea
+                  id="lux-detail"
+                  v-model="formData.businessGoal.specificDetail"
+                  rows="4"
+                  class="luxury-textarea"
+                  placeholder="Cuéntanos brevemente sobre tus retos actuales, dudas o lo que esperas lograr con tu marca..."
+                ></textarea>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.form-luxury-container {
+  font-family: 'Outfit', sans-serif;
+  color: #e6f1f2;
+}
+
+/* CARDS LUXURY */
 .luxury-card {
-  background: rgba(9, 35, 39, 0.75);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(9, 35, 39, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .luxury-card:hover {
   border-color: rgba(168, 199, 56, 0.25);
-}
-
-.border-bottom-hairline {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
 }
 
 .luxury-overline {
-  font-family: 'Outfit', sans-serif;
   font-size: 0.72rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 700;
   display: block;
-  color: rgba(255, 255, 255, 0.4);
   margin-bottom: 2px;
 }
 
+.text-lime {
+  color: #A8C738 !important;
+}
+
+.text-cyan {
+  color: #00B1BC !important;
+}
+
 .luxury-card-title {
-  font-family: 'Work Sans', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
   font-weight: 700;
-  letter-spacing: 0.5px;
   color: #ffffff;
 }
 
 .luxury-mono-badge {
-  font-family: monospace;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.04);
   padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #88a0a3;
 }
 
+.border-bottom-hairline {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.border-top-hairline {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* INPUTS */
 .luxury-field {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .luxury-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
   font-weight: 600;
-  margin-bottom: 6px;
-  display: block;
+  color: #c4d9db;
+  text-transform: uppercase;
 }
 
 .luxury-input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(4, 13, 14, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
+  padding: 12px 16px;
   color: #ffffff;
-  padding: 10px 14px;
-  font-size: 0.92rem;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
   transition: all 0.25s ease;
+  outline: none;
 }
 
 .luxury-input:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.06);
-  border-color: #a8c738;
-  box-shadow: 0 0 15px rgba(168, 199, 56, 0.2);
-  color: #ffffff;
+  border-color: #A8C738;
+  background: rgba(4, 13, 14, 0.85);
+  box-shadow: 0 0 0 3px rgba(168, 199, 56, 0.15);
 }
 
 .luxury-input.input-error {
   border-color: #ef4444 !important;
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3) !important;
-  background: rgba(239, 68, 68, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
 }
 
 .field-error-text {
-  color: #f87171;
   font-size: 0.78rem;
-  margin-top: 5px;
+  color: #f87171;
   display: flex;
   align-items: center;
-  font-family: 'Outfit', sans-serif;
-  animation: fadeInError 0.3s ease;
 }
 
-@keyframes fadeInError {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.luxury-date::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  cursor: pointer;
-}
-
-.luxury-question-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.luxury-question-item:last-child {
-  border-bottom: none;
-}
-
-.q-index {
-  font-family: monospace;
-  font-size: 0.92rem;
-  color: #a8c738;
-  margin-right: 8px;
-  font-weight: 700;
-}
-
-.q-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.02rem;
-  font-weight: 300;
-}
-
-/* SEGMENTED CONTROL */
-.luxury-segmented-control {
-  display: flex;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.luxury-textarea {
+  background: rgba(4, 13, 14, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 3px;
-  gap: 3px;
-  min-width: 250px;
-}
-
-.seg-sm {
-  min-width: 200px;
-}
-
-.seg-btn {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.86rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.seg-btn:hover {
+  padding: 14px 16px;
   color: #ffffff;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: all 0.25s ease;
+  outline: none;
+  resize: vertical;
 }
 
-.seg-btn.active {
-  background: #a8c738;
-  color: #061e22;
-  box-shadow: 0 2px 10px rgba(168, 199, 56, 0.35);
+.luxury-textarea:focus {
+  border-color: #A8C738;
+  background: rgba(4, 13, 14, 0.85);
+  box-shadow: 0 0 0 3px rgba(168, 199, 56, 0.15);
+}
+
+/* PREGUNTAS Y OPCIONES */
+.luxury-question-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.q-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.q-number {
+  font-family: 'SF Mono', monospace;
+  font-size: 0.9rem;
+  color: #A8C738;
   font-weight: 700;
+  margin-top: 1px;
 }
 
-.seg-btn-no.active {
-  background: #ef4444;
-  color: #ffffff;
-  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.35);
+.q-title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
 }
 
-.seg-btn-rev.active {
-  background: #f59e0b;
-  color: #ffffff;
-  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+/* OPCIONES INTERACTIVAS */
+.luxury-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
 }
 
-.luxury-subgroup {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-left: 3px solid #a8c738;
-}
-
-/* SIDEBAR AUDIT */
-.scorecard-number {
-  font-family: 'Outfit', sans-serif;
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.scorecard-caption {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: rgba(255, 255, 255, 0.4);
-  font-family: 'Outfit', sans-serif;
-}
-
-.luxury-status-chip {
-  display: inline-block;
-  padding: 4px 12px;
-  border: 1px solid;
-  border-radius: 20px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: 'Outfit', sans-serif;
-}
-
-.btn-luxury-action {
-  background: #a8c738;
-  color: #061e22;
-  font-weight: 700;
-  border: none;
+.luxury-option-pill {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 12px;
   padding: 12px 16px;
-  font-family: 'Outfit', sans-serif;
-  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #c4d9db;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.22s ease-in-out;
+  outline: none;
+  position: relative;
 }
 
-.btn-luxury-action:hover {
-  background: #bce13f;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(168, 199, 56, 0.3);
-}
-
-.btn-luxury-outline {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-weight: 600;
-  border-radius: 12px;
-  padding: 10px 16px;
-  font-size: 0.88rem;
-  transition: all 0.25s ease;
-}
-
-.btn-luxury-outline:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+.luxury-option-pill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(168, 199, 56, 0.35);
   color: #ffffff;
+  transform: translateY(-2px);
 }
 
-.luxury-brand-card {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px dashed rgba(255, 255, 255, 0.1);
+.pill-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: transparent;
+  transition: all 0.2s ease;
 }
 
-.bg-lime-subtle {
-  background: rgba(168, 199, 56, 0.15);
-  color: #a8c738;
-  border: 1px solid rgba(168, 199, 56, 0.3);
+.pill-text {
+  font-size: 0.92rem;
+  line-height: 1.35;
 }
 
-.text-lime {
-  color: #a8c738 !important;
+/* ACTIVO / SELECCIONADO */
+.luxury-option-pill.active {
+  background: rgba(168, 199, 56, 0.12);
+  border-color: #A8C738;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(168, 199, 56, 0.15);
 }
 
-.text-cyan {
-  color: #00b1bc !important;
+.luxury-option-pill.active .pill-check {
+  background: #A8C738;
+  border-color: #A8C738;
+  color: #040d0e;
+  font-weight: bold;
 }
 
-@media (max-width: 767.98px) {
-  .luxury-segmented-control {
-    width: 100% !important;
-    min-width: 100% !important;
-  }
-  .q-content {
-    width: 100%;
-  }
-  .scorecard-number {
-    font-size: 3rem;
+/* SUBGRUPOS CONDICIONALES */
+.luxury-subgroup {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px dashed rgba(168, 199, 56, 0.3);
+}
+
+/* ANIMACIONES TRANSICIONES */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@media (max-width: 768px) {
+  .luxury-options-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
