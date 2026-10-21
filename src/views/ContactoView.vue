@@ -53,10 +53,10 @@ onUnmounted(() => {
     <div class="container position-relative z-1 py-5">
       <!-- HERO HEADER -->
       <section class="contacto-hero text-center mb-4 mb-lg-5 pt-3 pt-md-4">
-        <div class="d-inline-flex align-items-center gap-2 hero-badge mb-3">
+        <!-- <div class="d-inline-flex align-items-center gap-2 hero-badge mb-3">
           <span class="badge-dot"></span>
           <span>DIAGNÓSTICO DIGITAL • 100% GRATUITO</span>
-        </div>
+        </div> -->
 
         <h1 class="hero-title fw-bold text-uppercase mb-3">
           DESCUBRE EL POTENCIAL DE <br><span class="text-lime-gradient">TU MARCA</span>
