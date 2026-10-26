@@ -17,7 +17,7 @@ defineProps<Props>();
     <div class="row justify-content-center">
       <!-- COLUMNA PRINCIPAL DE FORMULARIO -->
       <div class="col-12 col-xl-12">
-        
+
         <!-- ==============================================
              BLOQUE: DATOS GENERALES
              ============================================== -->
@@ -37,15 +37,9 @@ defineProps<Props>();
                 <label for="lux-name" class="luxury-label">
                   Nombre del contacto <span class="text-lime">*</span>
                 </label>
-                <input
-                  id="lux-name"
-                  v-model="formData.general.contactName"
-                  type="text"
-                  class="luxury-input"
-                  :class="{ 'input-error': errors?.contactName }"
-                  placeholder="Tu nombre completo o representante"
-                  @input="errors && (errors.contactName = false)"
-                />
+                <input id="lux-name" v-model="formData.general.contactName" type="text" class="luxury-input"
+                  :class="{ 'input-error': errors?.contactName }" placeholder="Tu nombre completo o representante"
+                  @input="errors && (errors.contactName = false)" />
                 <span v-if="errors?.contactName" class="field-error-text">
                   <i class="bi bi-exclamation-circle-fill me-1"></i> Por favor ingresa tu nombre.
                 </span>
@@ -58,15 +52,9 @@ defineProps<Props>();
                 <label for="lux-phone" class="luxury-label">
                   WhatsApp / teléfono <span class="text-lime">*</span>
                 </label>
-                <input
-                  id="lux-phone"
-                  v-model="formData.general.phone"
-                  type="tel"
-                  class="luxury-input"
-                  :class="{ 'input-error': errors?.contact }"
-                  placeholder="Ej. +52 55 1234 5678"
-                  @input="errors && (errors.contact = false)"
-                />
+                <input id="lux-phone" v-model="formData.general.phone" type="tel" class="luxury-input"
+                  :class="{ 'input-error': errors?.contact }" placeholder="Ej. +52 55 1234 5678"
+                  @input="errors && (errors.contact = false)" />
                 <span v-if="errors?.contact" class="field-error-text">
                   <i class="bi bi-exclamation-circle-fill me-1"></i> Ingresa al menos un medio (WhatsApp o correo).
                 </span>
@@ -77,15 +65,9 @@ defineProps<Props>();
             <div class="col-12">
               <div class="luxury-field">
                 <label for="lux-email" class="luxury-label">Correo electrónico</label>
-                <input
-                  id="lux-email"
-                  v-model="formData.general.email"
-                  type="email"
-                  class="luxury-input"
-                  :class="{ 'input-error': errors?.contact }"
-                  placeholder="nombre@empresa.com"
-                  @input="errors && (errors.contact = false)"
-                />
+                <input id="lux-email" v-model="formData.general.email" type="email" class="luxury-input"
+                  :class="{ 'input-error': errors?.contact }" placeholder="nombre@empresa.com"
+                  @input="errors && (errors.contact = false)" />
               </div>
             </div>
           </div>
@@ -108,35 +90,27 @@ defineProps<Props>();
             <div class="luxury-question-block py-3">
               <div class="q-header mb-3">
                 <span class="q-number">1.</span>
-                <span class="q-title text-white">¿Tu negocio cuenta con un logotipo y una imagen de marca definidos?</span>
+                <span class="q-title text-white">¿Tu negocio cuenta con un logotipo y una imagen de marca
+                  definidos?</span>
               </div>
               <div class="luxury-options-grid">
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.brandIdentity.logoDefined === 'si_definidos' }"
-                  @click="formData.brandIdentity.logoDefined = 'si_definidos'"
-                >
+                  @click="formData.brandIdentity.logoDefined = 'si_definidos'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí, ambos están definidos</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.brandIdentity.logoDefined === 'logo_mejorar' }"
-                  @click="formData.brandIdentity.logoDefined = 'logo_mejorar'"
-                >
+                  @click="formData.brandIdentity.logoDefined = 'logo_mejorar'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Tengo logotipo, pero necesito mejorar mi imagen</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.brandIdentity.logoDefined === 'no_crear' }"
-                  @click="formData.brandIdentity.logoDefined = 'no_crear'"
-                >
+                  @click="formData.brandIdentity.logoDefined = 'no_crear'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">No, necesito crear mi identidad de marca</span>
                 </button>
@@ -150,32 +124,23 @@ defineProps<Props>();
                 <span class="q-title text-white">¿Tus publicaciones mantienen un estilo visual consistente?</span>
               </div>
               <div class="luxury-options-grid">
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.brandIdentity.visualConsistency === 'si' }"
-                  @click="formData.brandIdentity.visualConsistency = 'si'"
-                >
+                  @click="formData.brandIdentity.visualConsistency = 'si'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.brandIdentity.visualConsistency === 'algunas' }"
-                  @click="formData.brandIdentity.visualConsistency = 'algunas'"
-                >
+                  @click="formData.brandIdentity.visualConsistency = 'algunas'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Algunas sí y otras no</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.brandIdentity.visualConsistency === 'no_mejorar' }"
-                  @click="formData.brandIdentity.visualConsistency = 'no_mejorar'"
-                >
+                  @click="formData.brandIdentity.visualConsistency = 'no_mejorar'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">No, necesito mejorar su apariencia</span>
                 </button>
@@ -204,32 +169,23 @@ defineProps<Props>();
                 <span class="q-title text-white">¿Publicas contenido de manera constante en tus redes sociales?</span>
               </div>
               <div class="luxury-options-grid">
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.socialContent.postingFrequency === 'si_constante' }"
-                  @click="formData.socialContent.postingFrequency = 'si_constante'"
-                >
+                  @click="formData.socialContent.postingFrequency = 'si_constante'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí, de manera constante</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.socialContent.postingFrequency === 'de_vez_en_cuando' }"
-                  @click="formData.socialContent.postingFrequency = 'de_vez_en_cuando'"
-                >
+                  @click="formData.socialContent.postingFrequency = 'de_vez_en_cuando'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">De vez en cuando</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.socialContent.postingFrequency === 'no_publico' }"
-                  @click="formData.socialContent.postingFrequency = 'no_publico'"
-                >
+                  @click="formData.socialContent.postingFrequency = 'no_publico'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Actualmente no publico</span>
                 </button>
@@ -240,35 +196,27 @@ defineProps<Props>();
             <div class="luxury-question-block py-3 border-top-hairline">
               <div class="q-header mb-3">
                 <span class="q-number">4.</span>
-                <span class="q-title text-white">¿Tus publicaciones reflejan o ayudan a explicar tus servicios y atraer clientes?</span>
+                <span class="q-title text-white">¿Tus publicaciones reflejan o ayudan a explicar tus servicios y atraer
+                  clientes?</span>
               </div>
               <div class="luxury-options-grid">
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.socialContent.explainsServices === 'si' }"
-                  @click="formData.socialContent.explainsServices = 'si'"
-                >
+                  @click="formData.socialContent.explainsServices = 'si'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.socialContent.explainsServices === 'algunas_veces' }"
-                  @click="formData.socialContent.explainsServices = 'algunas_veces'"
-                >
+                  @click="formData.socialContent.explainsServices = 'algunas_veces'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Algunas veces</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.socialContent.explainsServices === 'no_seguro' }"
-                  @click="formData.socialContent.explainsServices = 'no_seguro'"
-                >
+                  @click="formData.socialContent.explainsServices = 'no_seguro'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">No estoy seguro(a) / necesito mejorar mi contenido</span>
                 </button>
@@ -297,22 +245,14 @@ defineProps<Props>();
                 <span class="q-title text-white">¿Tu negocio cuenta con página web?</span>
               </div>
               <div class="d-flex gap-3">
-                <button
-                  type="button"
-                  class="luxury-option-pill flex-fill"
-                  :class="{ active: formData.website.hasWebsite === 'si' }"
-                  @click="formData.website.hasWebsite = 'si'"
-                >
+                <button type="button" class="luxury-option-pill flex-fill"
+                  :class="{ active: formData.website.hasWebsite === 'si' }" @click="formData.website.hasWebsite = 'si'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text fw-semibold">Sí</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill flex-fill"
-                  :class="{ active: formData.website.hasWebsite === 'no' }"
-                  @click="formData.website.hasWebsite = 'no'"
-                >
+                <button type="button" class="luxury-option-pill flex-fill"
+                  :class="{ active: formData.website.hasWebsite === 'no' }" @click="formData.website.hasWebsite = 'no'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text fw-semibold">No</span>
                 </button>
@@ -321,7 +261,8 @@ defineProps<Props>();
 
             <!-- Condicionales si tiene web -->
             <transition name="fade-slide">
-              <div v-if="formData.website.hasWebsite === 'si'" class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3 border-top-hairline">
+              <div v-if="formData.website.hasWebsite === 'si'"
+                class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3 border-top-hairline">
                 <div class="luxury-sub-header mb-3 pb-2 border-bottom-hairline">
                   <span class="text-lime small fw-bold text-uppercase">
                     <i class="bi bi-arrow-return-right me-1"></i> Si respondiste que sí:
@@ -335,32 +276,23 @@ defineProps<Props>();
                     <span class="q-title text-white">¿Tu página se visualiza correctamente en celulares?</span>
                   </div>
                   <div class="luxury-options-grid">
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.website.mobileFriendly === 'si' }"
-                      @click="formData.website.mobileFriendly = 'si'"
-                    >
+                      @click="formData.website.mobileFriendly = 'si'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">Sí</span>
                     </button>
 
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.website.mobileFriendly === 'no' }"
-                      @click="formData.website.mobileFriendly = 'no'"
-                    >
+                      @click="formData.website.mobileFriendly = 'no'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">No</span>
                     </button>
 
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.website.mobileFriendly === 'revision' }"
-                      @click="formData.website.mobileFriendly = 'revision'"
-                    >
+                      @click="formData.website.mobileFriendly = 'revision'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">Necesita revisión</span>
                     </button>
@@ -374,34 +306,48 @@ defineProps<Props>();
                     <span class="q-title text-white">¿La página que tienes actualmente, está alineada a tu marca?</span>
                   </div>
                   <div class="luxury-options-grid">
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.website.alignedWithBrand === 'si' }"
-                      @click="formData.website.alignedWithBrand = 'si'"
-                    >
+                      @click="formData.website.alignedWithBrand = 'si'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">Sí</span>
                     </button>
 
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.website.alignedWithBrand === 'no' }"
-                      @click="formData.website.alignedWithBrand = 'no'"
-                    >
+                      @click="formData.website.alignedWithBrand = 'no'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">No</span>
                     </button>
 
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.website.alignedWithBrand === 'actualizar' }"
-                      @click="formData.website.alignedWithBrand = 'actualizar'"
-                    >
+                      @click="formData.website.alignedWithBrand = 'actualizar'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">Solo requiere actualizarse</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Pregunta 8: Comercio electrónico -->
+                <div class="luxury-question-block py-3 border-top-hairline">
+                  <div class="q-header mb-3">
+                    <span class="q-number">8.</span>
+                    <span class="q-title text-white">¿Tu negocio necesita o busca vender productos en línea (tienda
+                      online / e-commerce)?</span>
+                  </div>
+                  <div class="luxury-options-grid">
+                    <button type="button" class="luxury-option-pill"
+                      :class="{ active: formData.website.sellsOnline === 'si' }"
+                      @click="formData.website.sellsOnline = 'si'">
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">Sí</span>
+                    </button>
+                    <button type="button" class="luxury-option-pill"
+                      :class="{ active: formData.website.sellsOnline === 'no' }"
+                      @click="formData.website.sellsOnline = 'no'">
+                      <span class="pill-check"><i class="bi bi-check2"></i></span>
+                      <span class="pill-text">No</span>
                     </button>
                   </div>
                 </div>
@@ -427,45 +373,34 @@ defineProps<Props>();
             <div class="luxury-question-block py-3">
               <div class="q-header mb-3">
                 <span class="q-number">8.</span>
-                <span class="q-title text-white">¿Actualmente inviertes en publicidad para promocionar tu negocio?</span>
+                <span class="q-title text-white">¿Actualmente inviertes en publicidad para promocionar tu
+                  negocio?</span>
               </div>
               <div class="luxury-options-grid">
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.advertising.investsInAds === 'no' }"
-                  @click="formData.advertising.investsInAds = 'no'"
-                >
+                  @click="formData.advertising.investsInAds = 'no'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">No, todavía no</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.advertising.investsInAds === 'meta' }"
-                  @click="formData.advertising.investsInAds = 'meta'"
-                >
+                  @click="formData.advertising.investsInAds = 'meta'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí, en Facebook o Instagram</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.advertising.investsInAds === 'google' }"
-                  @click="formData.advertising.investsInAds = 'google'"
-                >
+                  @click="formData.advertising.investsInAds = 'google'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí, en Google</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.advertising.investsInAds === 'ambas' }"
-                  @click="formData.advertising.investsInAds = 'ambas'"
-                >
+                  @click="formData.advertising.investsInAds = 'ambas'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Sí, en ambas plataformas</span>
                 </button>
@@ -474,10 +409,8 @@ defineProps<Props>();
 
             <!-- Condicional si ya invierte -->
             <transition name="fade-slide">
-              <div
-                v-if="formData.advertising.investsInAds !== 'no' && formData.advertising.investsInAds !== ''"
-                class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3 border-top-hairline"
-              >
+              <div v-if="formData.advertising.investsInAds !== 'no' && formData.advertising.investsInAds !== ''"
+                class="luxury-subgroup mt-3 p-3 p-md-4 rounded-3 border-top-hairline">
                 <div class="luxury-sub-header mb-3 pb-2 border-bottom-hairline">
                   <span class="text-cyan small fw-bold text-uppercase">
                     <i class="bi bi-arrow-return-right me-1"></i> Si ya inviertes en publicidad:
@@ -491,32 +424,23 @@ defineProps<Props>();
                     <span class="q-title text-white">¿Qué resultados estás obteniendo?</span>
                   </div>
                   <div class="luxury-options-grid">
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.advertising.results === 'recibo_clientes' }"
-                      @click="formData.advertising.results = 'recibo_clientes'"
-                    >
+                      @click="formData.advertising.results = 'recibo_clientes'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">Recibo consultas o clientes</span>
                     </button>
 
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.advertising.results === 'casi_no' }"
-                      @click="formData.advertising.results = 'casi_no'"
-                    >
+                      @click="formData.advertising.results = 'casi_no'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">Invierto, pero casi no recibo resultados</span>
                     </button>
 
-                    <button
-                      type="button"
-                      class="luxury-option-pill"
+                    <button type="button" class="luxury-option-pill"
                       :class="{ active: formData.advertising.results === 'no_medir' }"
-                      @click="formData.advertising.results = 'no_medir'"
-                    >
+                      @click="formData.advertising.results = 'no_medir'">
                       <span class="pill-check"><i class="bi bi-check2"></i></span>
                       <span class="pill-text">No sé cómo medir los resultados</span>
                     </button>
@@ -547,52 +471,37 @@ defineProps<Props>();
                 <span class="q-title text-white">¿Qué te gustaría mejorar primero?</span>
               </div>
               <div class="luxury-options-grid">
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.businessGoal.priorityGoal === 'marca_profesional' }"
-                  @click="formData.businessGoal.priorityGoal = 'marca_profesional'"
-                >
+                  @click="formData.businessGoal.priorityGoal = 'marca_profesional'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Tener una imagen de marca más profesional</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.businessGoal.priorityGoal === 'publicaciones_contenido' }"
-                  @click="formData.businessGoal.priorityGoal = 'publicaciones_contenido'"
-                >
+                  @click="formData.businessGoal.priorityGoal = 'publicaciones_contenido'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Mejorar mis publicaciones y contenido</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.businessGoal.priorityGoal === 'pagina_web' }"
-                  @click="formData.businessGoal.priorityGoal = 'pagina_web'"
-                >
+                  @click="formData.businessGoal.priorityGoal = 'pagina_web'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Tener una página web o mejorar la que ya tengo</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.businessGoal.priorityGoal === 'mas_clientes_pauta' }"
-                  @click="formData.businessGoal.priorityGoal = 'mas_clientes_pauta'"
-                >
+                  @click="formData.businessGoal.priorityGoal = 'mas_clientes_pauta'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">Conseguir más clientes mediante publicidad</span>
                 </button>
 
-                <button
-                  type="button"
-                  class="luxury-option-pill"
+                <button type="button" class="luxury-option-pill"
                   :class="{ active: formData.businessGoal.priorityGoal === 'orientacion' }"
-                  @click="formData.businessGoal.priorityGoal = 'orientacion'"
-                >
+                  @click="formData.businessGoal.priorityGoal = 'orientacion'">
                   <span class="pill-check"><i class="bi bi-check2"></i></span>
                   <span class="pill-text">No estoy seguro(a); necesito orientación</span>
                 </button>
@@ -606,13 +515,9 @@ defineProps<Props>();
                 <span class="q-title text-white">¿Hay algo específico que te gustaría mejorar o resolver?</span>
               </div>
               <div class="luxury-field">
-                <textarea
-                  id="lux-detail"
-                  v-model="formData.businessGoal.specificDetail"
-                  rows="4"
+                <textarea id="lux-detail" v-model="formData.businessGoal.specificDetail" rows="4"
                   class="luxury-textarea"
-                  placeholder="Cuéntanos brevemente sobre tus retos actuales, dudas o lo que esperas lograr con tu marca..."
-                ></textarea>
+                  placeholder="Cuéntanos brevemente sobre tus retos actuales, dudas o lo que esperas lograr con tu marca..."></textarea>
               </div>
             </div>
           </div>

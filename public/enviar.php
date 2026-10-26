@@ -94,6 +94,8 @@ $explica_servicios    = htmlspecialchars(trim($_POST['explica_servicios'] ?? 'No
 $cuenta_con_web       = htmlspecialchars(trim($_POST['cuenta_con_web'] ?? 'No especificado'), ENT_QUOTES, 'UTF-8');
 $web_celulares        = htmlspecialchars(trim($_POST['web_celulares'] ?? 'N/A'), ENT_QUOTES, 'UTF-8');
 $web_alineada         = htmlspecialchars(trim($_POST['web_alineada'] ?? 'N/A'), ENT_QUOTES, 'UTF-8');
+$web_vende_en_linea   = htmlspecialchars(trim($_POST['web_vende_en_linea'] ?? 'No especificado'), ENT_QUOTES, 'UTF-8');
+
 
 $invierte_publicidad  = htmlspecialchars(trim($_POST['invierte_publicidad'] ?? 'No especificado'), ENT_QUOTES, 'UTF-8');
 $resultados_publicidad = htmlspecialchars(trim($_POST['resultados_publicidad'] ?? 'N/A'), ENT_QUOTES, 'UTF-8');
@@ -162,10 +164,10 @@ $mensaje_html = "
 
     <!-- RESULTADO INTERNO DE VENTAS — USO DE LUMINEL -->
     <div class='sales-box'>
-      <div class='sales-title'>Necesidad prioritaria detectada:</div>
+      <div class='sales-title'>DIAGNÓSTICO INTERNO:</div>
       <div class='sales-main-service'>{$necesidad_prioritaria}</div>
 
-      <div class='sales-title'>Servicio clave a ofrecer:</div>
+      <div class='sales-title'>Recomendación comercial:</div>
       <div style='color: #ffffff; font-size: 16px; font-weight: 700; margin-bottom: 14px;'>{$servicio_principal}</div>
 
       <div class='sales-title' style='margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;'>Diagnóstico estratégico por pilar:</div>
@@ -176,13 +178,13 @@ $mensaje_html = "
       </div>
 
       <div class='pillar-box' style='border-left-color: #00b1bc;'>
-        <div class='pillar-name'>2. Diseño web</div>
-        <div class='pillar-desc'>{$diag_web}</div>
+        <div class='pillar-name' style='color: #00b1bc;'>2. Contenido para redes sociales</div>
+        <div class='pillar-desc'>{$diag_redes}</div>
       </div>
 
       <div class='pillar-box' style='border-left-color: #f59e0b;'>
-        <div class='pillar-name' style='color: #f59e0b;'>3. Contenido para redes sociales</div>
-        <div class='pillar-desc'>{$diag_redes}</div>
+        <div class='pillar-name' style='color: #f59e0b;'>3. Diseño web</div>
+        <div class='pillar-desc'>{$diag_web}</div>
       </div>
 
       <div class='pillar-box' style='border-left-color: #8b5cf6;'>
@@ -262,6 +264,10 @@ $mensaje_html = "
       <tr>
         <td class='label'>¿Está alineada a la marca?</td>
         <td class='value'>{$web_alineada}</td>
+      </tr>
+       <tr>
+        <td class='label'>¿Necesita vender productos en línea?</td>
+        <td class='value'>{$web_vende_en_linea}</td>
       </tr>
     </table>
 
