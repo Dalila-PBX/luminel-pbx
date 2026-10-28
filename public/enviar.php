@@ -225,7 +225,7 @@ $mensaje_html = "
     </div>
 
     <!-- RESPUESTAS COMPLETAS DE EVALUACIÓN DIGITAL -->
-    <div class='section-title'>📋 Respuestas de la Evaluación Digital</div>
+    <div class='section-title'>Respuestas de la Evaluación Digital</div>
 
     <div style='color: #a8c738; font-weight: bold; font-size: 13px; margin: 12px 0 6px 0;'>1. IDENTIDAD DE MARCA</div>
     <table>
